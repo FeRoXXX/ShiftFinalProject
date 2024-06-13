@@ -9,7 +9,8 @@ import UIKit
 
 class AuthAssembly {
     static func build() -> UIViewController {
-        let presenter = AuthPresenter()
+        let dataRepository = AuthDataRepository()
+        let presenter = AuthPresenter(dataRepository: dataRepository)
         let viewController = AuthViewController(presenter: presenter)
         return viewController
     }

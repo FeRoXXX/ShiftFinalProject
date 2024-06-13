@@ -9,7 +9,11 @@ import Foundation
 
 class AuthPresenter {
     private weak var ui: IAuthViewController?
+    private let dataRepository: IAuthDataRepository
     
+    init(dataRepository: IAuthDataRepository) {
+        self.dataRepository = dataRepository
+    }
 }
 
 extension AuthPresenter: IAuthPresenter {
@@ -39,6 +43,15 @@ extension AuthPresenter: IAuthPresenter {
                 return
         }
         
+        dataRepository.signIn(token: text) { result in
+            switch result {
+            case .success(let success):
+            case .failure(_):
+                DispatchQueue.main.async { [weak self] in
+                    self?.ui?.setupErrorTextField()
+                }
+            }
+        }
     }
     
     func hideKeyboard() {

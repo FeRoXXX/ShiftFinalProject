@@ -11,7 +11,8 @@ class AuthAssembly {
     static func build() -> UIViewController {
         let dataRepository = AuthDataRepository()
         let presenter = AuthPresenter(dataRepository: dataRepository)
-        let viewController = AuthViewController(presenter: presenter)
+        let router = AuthRouter()
+        let viewController = AuthViewController(presenter: presenter, router: router)
         return viewController
     }
 }

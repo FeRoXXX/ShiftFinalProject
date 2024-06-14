@@ -46,6 +46,9 @@ extension AuthPresenter: IAuthPresenter {
         dataRepository.signIn(token: text) { result in
             switch result {
             case .success(let success):
+                DispatchQueue.main.async { [weak self] in
+                    self?.ui?.successAuth()
+                }
             case .failure(_):
                 DispatchQueue.main.async { [weak self] in
                     self?.ui?.setupErrorTextField()

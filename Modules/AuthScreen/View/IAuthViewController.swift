@@ -12,4 +12,5 @@ protocol IAuthViewController: AnyObject {
     func setupNoSelectedTextField()
     func setupErrorTextField()
     func hideKeyboard()
+    func successAuth()
 }

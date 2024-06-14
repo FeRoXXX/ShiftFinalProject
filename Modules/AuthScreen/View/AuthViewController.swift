@@ -10,10 +10,12 @@ import UIKit
 final class AuthViewController: UIViewController {
     
     private lazy var componentView = AuthView(delegate: self)
+    private let router: IAuthRouter?
     private let presenter: IAuthPresenter
     
-    init(presenter: IAuthPresenter) {
+    init(presenter: IAuthPresenter, router: AuthRouter) {
         self.presenter = presenter
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,6 +30,7 @@ final class AuthViewController: UIViewController {
         setupUI()
         setupHideKeyboardGesture()
         setupButtonAction()
+        router?.setupUI(self)
         presenter.viewLoaded(ui: self)
     }
 }
@@ -67,6 +70,10 @@ extension AuthViewController: IAuthViewController {
     
     func setupErrorTextField() {
         componentView.setupError()
+    }
+    
+    func successAuth() {
+        router?.routeToRepositoriesList()
     }
     
     func hideKeyboard() {

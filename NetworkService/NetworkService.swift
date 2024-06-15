@@ -9,34 +9,22 @@ import Foundation
 
 enum NetworkService {
     case signIn(token: String)
+    case getRepository
 
     private var urlSession: URLSession {
         let config = URLSessionConfiguration.default
-        //config.httpAdditionalHeaders = ["Accept": "application/json", "X-GitHub-Api-Version": "2022-11-28"]
         return URLSession(configuration: config)
+    }
+    
+    private var reEntryService: IReEntryService {
+        let reEntryService = ReEntryService()
+        return reEntryService
     }
 }
 
 extension NetworkService {
-    private func makeRequest() -> URLRequest? {
-        switch self {
-        case .signIn(let token):
-            let baseComponent = URLComponents(string: "https://api.github.com/user")
-            guard let baseComponentURL = baseComponent?.url else {
-                fatalError() //TODO: MAKE ALERT
-            }
 
-            var request = URLRequest(url: baseComponentURL)
-            request.httpMethod = "GET"
-
-             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-
-            return request
-        }
-    }
-
-    func fetch(completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetch(completion: @escaping (Result<GeneralModel, Error>) -> Void) {
         guard let request = makeRequest() else {
             fatalError()
         }
@@ -49,7 +37,7 @@ extension NetworkService {
                 let statusCode = httpResponse.statusCode
                 switch statusCode {
                     case 200...299:
-                        completion(.success(data))
+                        completion(decodeData(data))
                     case 300...399:
                         fatalError()
                     case 400...499:
@@ -62,5 +50,57 @@ extension NetworkService {
             }
         }
         task.resume()
+    }
+    
+    private func makeRequest() -> URLRequest? {
+        switch self {
+        case .signIn(let token):
+            let baseComponent = URLComponents(string: "https://api.github.com/user")
+            guard let baseComponentURL = baseComponent?.url else {
+                fatalError() //TODO: MAKE ALERT
+            }
+
+            var request = URLRequest(url: baseComponentURL)
+            request.httpMethod = "GET"
+
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+            return request
+        case .getRepository:
+            guard let reposURL = reEntryService.getReposURL() else {
+                fatalError() //TODO: Make alert
+            }
+            let baseComponent = URLComponents(string: reposURL)
+            guard let baseComponentURL = baseComponent?.url else {
+                fatalError() //TODO: Make alert
+            }
+            
+            var request = URLRequest(url: baseComponentURL)
+            request.httpMethod = "GET"
+            
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            return request
+        }
+    }
+    
+    private func decodeData(_ data: Data) -> Result<GeneralModel, Error> {
+        switch self {
+        case .signIn(_):
+            do {
+                let decodedData = try JSONDecoder().decode(AuthDataModel.self, from: data)
+                reEntryService.setReposURL(reposURL: decodedData.repos_url)
+                return .success(GeneralModel.authModel(decodedData))
+            } catch {
+                return .failure(error)
+            }
+        case .getRepository:
+            do {
+                let decodedData = try JSONDecoder().decode([RepositoriesListModel].self, from: data)
+                return .success(GeneralModel.repositoriesListModel(decodedData))
+            } catch {
+                return .failure(error)
+            }
+        }
     }
 }

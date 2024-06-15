@@ -10,9 +10,11 @@ import Foundation
 final class RepositoriesListPresenter {
     private weak var ui: IRepositoriesListViewController?
     private let dataSource: IRepositoriesListTableViewDataSource
+    private let dataRepository: IRepositoriesListDataRepository
     
-    init(dataSource: IRepositoriesListTableViewDataSource) {
+    init(dataSource: IRepositoriesListTableViewDataSource, dataRepository: IRepositoriesListDataRepository) {
         self.dataSource = dataSource
+        self.dataRepository = dataRepository
     }
 }
 
@@ -22,6 +24,18 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
         self.ui = ui
         
         ui.setupDataSource(dataSource)
-        ui.updateData()
+        dataRepository.getRepositories { result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async { [weak self] in
+                    self?.dataSource.setupData(success)
+                    self?.ui?.updateData()
+                }
+            case .failure(let failure):
+                DispatchQueue.main.async {
+                    print(failure)
+                }
+            }
+        }
     }
 }

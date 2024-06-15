@@ -36,6 +36,7 @@ final class RepositoriesListTableViewCell: UITableViewCell {
     private lazy var verticalStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [horizontalStack, repositoryDescription])
         stackView.axis = .vertical
+        stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -64,6 +65,7 @@ private extension RepositoriesListTableViewCell {
     
     func setupUI() {
         backgroundColor = Colors.cellBackground
+        selectionStyle = .none
         addSubviews()
         setupConstraints()
     }
@@ -84,7 +86,7 @@ private extension RepositoriesListTableViewCell {
 
 extension RepositoriesListTableViewCell {
     
-    func setupData(_ data: RepositoryDescriptionModel) {
+    func setupData(_ data: RepositoriesListModel) {
         repositoryName.text = data.name
         repositoryLanguage.text = data.language
         repositoryDescription.text = data.description

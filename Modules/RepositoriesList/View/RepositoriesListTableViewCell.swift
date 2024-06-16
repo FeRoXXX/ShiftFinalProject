@@ -86,9 +86,12 @@ private extension RepositoriesListTableViewCell {
 
 extension RepositoriesListTableViewCell {
     
-    func setupData(_ data: RepositoriesListModel) {
+    func setupData(_ data: RepositoryDescriptionModel) {
         repositoryName.text = data.name
         repositoryLanguage.text = data.language
+        if let language = data.language {
+            repositoryLanguage.textColor = LanguageColors(rawValue: language)?.color ?? .white
+        }
         repositoryDescription.text = data.description
     }
     

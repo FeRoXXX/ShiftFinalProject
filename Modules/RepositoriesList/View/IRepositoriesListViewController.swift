@@ -9,5 +9,6 @@ import Foundation
 
 protocol IRepositoriesListViewController: AnyObject {
     func setupDataSource(_ dataSource: IRepositoriesListTableViewDataSource)
+    func loadNextViewController()
     func updateData()
 }

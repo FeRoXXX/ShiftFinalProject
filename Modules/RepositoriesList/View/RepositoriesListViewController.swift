@@ -10,9 +10,11 @@ import UIKit
 final class RepositoriesListViewController: UIViewController {
     private lazy var componentView = RepositoriesListView(delegate: self)
     private let presenter: IRepositoriesListPresenter
+    private let router: IRepositoriesListRouter
     
-    init(presenter: IRepositoriesListPresenter) {
+    init(presenter: IRepositoriesListPresenter, router: IRepositoriesListRouter) {
         self.presenter = presenter
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,6 +26,7 @@ final class RepositoriesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        router.setupUI(self)
         presenter.viewLoaded(ui: self)
     }
 }
@@ -32,6 +35,20 @@ private extension RepositoriesListViewController {
     
     func setupUI() {
         view = componentView
+        setupNavigationBarItem()
+        setupTitle()
+    }
+    
+    func setupNavigationBarItem() {
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.navigationBarItemsColor]
+        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [button]
+        navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
+        navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    func setupTitle() {
+        title = MokoText.RepositoriesListText.titleText
     }
 }
 
@@ -41,9 +58,18 @@ extension RepositoriesListViewController: IRepositoriesListViewController {
         componentView.setupDataSource(dataSource)
     }
     
+    func loadNextViewController() {
+        router.routeToRepositoryDetail()
+    }
+    
     func updateData() {
         componentView.updateTable()
     }
 }
 
-extension RepositoriesListViewController: RepositoriesListTableViewDelegate {}
+extension RepositoriesListViewController: RepositoriesListTableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showRepository(index: indexPath.row)
+    }
+}

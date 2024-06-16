@@ -13,4 +13,8 @@ enum MokoText {
         static let buttonText: String = "Sign In"
         static let errorText: String = "Invalid token"
     }
+    
+    enum RepositoriesListText {
+        static let titleText: String = "Repositories"
+    }
 }

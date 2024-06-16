@@ -7,9 +7,7 @@
 
 import Foundation
 
-class AuthDataRepository {
-    
-}
+class AuthDataRepository {}
 
 extension AuthDataRepository: IAuthDataRepository {
     
@@ -17,12 +15,12 @@ extension AuthDataRepository: IAuthDataRepository {
         NetworkService.signIn(token: token).fetch { result in
             switch result {
             case .success(let success):
-                do {
-                    let convertedData = try JSONDecoder().decode(AuthDataModel.self, from: success)
-                    completion(.success(convertedData))
-                } catch {
-                    completion(.failure(error)) //TODO: - Make failure alert
-                }
+                    switch success {
+                    case .authModel(let model):
+                        completion(.success(model))
+                    default:
+                        break
+                    }
             case .failure(let failure):
                 completion(.failure(failure))
             }

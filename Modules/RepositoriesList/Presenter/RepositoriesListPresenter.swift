@@ -7,10 +7,12 @@
 
 import Foundation
 
-final class RepositoriesListPresenter {
+final class RepositoriesListPresenter: RepositoryListDataStore {
     private weak var ui: IRepositoriesListViewController?
     private let dataSource: IRepositoriesListTableViewDataSource
     private let dataRepository: IRepositoriesListDataRepository
+    private var storageData: [RepositoryDescriptionModel] = []
+    var chosenRepository: ChoseRepositoryModel?
     
     init(dataSource: IRepositoriesListTableViewDataSource, dataRepository: IRepositoriesListDataRepository) {
         self.dataSource = dataSource
@@ -28,8 +30,12 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
             switch result {
             case .success(let success):
                 DispatchQueue.main.async { [weak self] in
-                    self?.dataSource.setupData(success)
-                    self?.ui?.updateData()
+                    guard let self else { return }
+                    storageData = success.map {
+                        RepositoryDescriptionModel(name: $0.name, language: $0.language, description: $0.description)
+                    }
+                    dataSource.setupData(storageData)
+                    ui.updateData()
                 }
             case .failure(let failure):
                 DispatchQueue.main.async {
@@ -37,5 +43,13 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
                 }
             }
         }
+    }
+    
+    func showRepository(index: Int) {
+        let data = dataRepository.getRepositories()
+        guard index < data.count else { return }
+        let detailData = data[index]
+        chosenRepository = ChoseRepositoryModel(repositoryName: detailData.name, ownerName: detailData.owner.login)
+        ui?.loadNextViewController()
     }
 }

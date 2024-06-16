@@ -7,17 +7,20 @@
 
 import Foundation
 
-class RepositoriesListDataRepository {}
+class RepositoriesListDataRepository {
+    private var storageData: [RepositoriesListModel] = []
+}
 
 extension RepositoriesListDataRepository: IRepositoriesListDataRepository {
     
     func getRepositories(completion: @escaping (Result<[RepositoriesListModel], any Error>) -> Void) {
         
-        NetworkService.getRepository.fetch { result in
+        NetworkService.getRepositories.fetch { [weak self] result in
             switch result {
             case .success(let success):
                 switch success {
                 case .repositoriesListModel(let model):
+                    self?.storageData = model
                     completion(.success(model))
                 default:
                     break
@@ -26,5 +29,9 @@ extension RepositoriesListDataRepository: IRepositoriesListDataRepository {
                 completion(.failure(failure))
             }
         }
+    }
+    
+    func getRepositories() -> [RepositoriesListModel] {
+        return storageData
     }
 }

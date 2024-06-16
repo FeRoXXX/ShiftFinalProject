@@ -8,11 +8,11 @@
 import UIKit
 
 protocol IRepositoriesListTableViewDataSource: UITableViewDataSource {
-    func setupData(_ data: [RepositoriesListModel])
+    func setupData(_ data: [RepositoryDescriptionModel])
 }
 
 final class RepositoriesListTableViewDataSource: NSObject {
-    var data: [RepositoriesListModel] = []
+    var data: [RepositoryDescriptionModel] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
@@ -30,7 +30,7 @@ final class RepositoriesListTableViewDataSource: NSObject {
 
 extension RepositoriesListTableViewDataSource: IRepositoriesListTableViewDataSource {
     
-    func setupData(_ data: [RepositoriesListModel]) {
+    func setupData(_ data: [RepositoryDescriptionModel]) {
         self.data = data
     }
 }

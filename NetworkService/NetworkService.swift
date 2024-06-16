@@ -9,7 +9,8 @@ import Foundation
 
 enum NetworkService {
     case signIn(token: String)
-    case getRepository
+    case getRepositories
+    case getRepository(chosenRepository: ChoseRepositoryModel)
 
     private var urlSession: URLSession {
         let config = URLSessionConfiguration.default
@@ -39,11 +40,11 @@ extension NetworkService {
                     case 200...299:
                         completion(decodeData(data))
                     case 300...399:
-                        fatalError()
+                        completion(.failure(Errors.newDomain))
                     case 400...499:
-                        fatalError()
+                        completion(.failure(Errors.clientError))
                     case 500...599:
-                        fatalError()
+                        completion(.failure(Errors.serverError))
                     default:
                         break
                 }
@@ -67,11 +68,25 @@ extension NetworkService {
             request.setValue("application/json", forHTTPHeaderField: "Accept")
 
             return request
-        case .getRepository:
+        case .getRepositories:
             guard let reposURL = reEntryService.getReposURL() else {
                 fatalError() //TODO: Make alert
             }
-            let baseComponent = URLComponents(string: reposURL)
+            let baseComponent = URLComponents(string: "https://api.github.com/users/icerockdev/repos")
+            guard let baseComponentURL = baseComponent?.url else {
+                fatalError() //TODO: Make alert
+            }
+            
+            var request = URLRequest(url: baseComponentURL)
+            request.httpMethod = "GET"
+            
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            return request
+        case .getRepository(let chosenRepository):
+            guard let reposURL = reEntryService.getReposURL() else {
+                fatalError() //TODO: Make alert
+            }
+            let baseComponent = URLComponents(string: "https://api.github.com/repos/\(chosenRepository.ownerName)/\(chosenRepository.repositoryName)")
             guard let baseComponentURL = baseComponent?.url else {
                 fatalError() //TODO: Make alert
             }
@@ -94,8 +109,16 @@ extension NetworkService {
             } catch {
                 return .failure(error)
             }
+        case .getRepositories:
+            do {
+                let decodedData = try JSONDecoder().decode([RepositoriesListModel].self, from: data)
+                return .success(GeneralModel.repositoriesListModel(decodedData))
+            } catch {
+                return .failure(error)
+            }
         case .getRepository:
             do {
+                print(String(data: data, encoding: .utf8))
                 let decodedData = try JSONDecoder().decode([RepositoriesListModel].self, from: data)
                 return .success(GeneralModel.repositoriesListModel(decodedData))
             } catch {

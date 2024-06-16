@@ -12,4 +12,10 @@ struct RepositoriesListModel: Decodable {
     let name: String
     let description: String?
     let language: String?
+    let owner: Owner
+}
+
+struct Owner: Decodable {
+    let id: Int
+    let login: String
 }

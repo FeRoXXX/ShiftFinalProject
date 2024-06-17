@@ -34,7 +34,19 @@ private extension RepositoryDetailViewController {
     
     func setupUI() {
         view = componentView
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar() {
+        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [button]
+        navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
     }
 }
 
-extension RepositoryDetailViewController: IRepositoryDetailViewController {}
+extension RepositoryDetailViewController: IRepositoryDetailViewController {
+    
+    func setTitle(_ title: String) {
+        self.title = title
+    }
+}

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol IRepositoryDetailViewController: AnyObject {
-    
+    func setTitle(_ title: String)
 }

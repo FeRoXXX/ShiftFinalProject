@@ -23,6 +23,7 @@ extension RepositoryDetailPresenter: IRepositoryDetailPresenter {
     func viewLoaded(ui: IRepositoryDetailViewController) {
         self.ui = ui
         guard let dataStore else { return }
+        ui.setTitle(dataStore.repositoryName)
         dataRepository.getDetail(chosenRepository: dataStore) { result in
             print(result)
         }

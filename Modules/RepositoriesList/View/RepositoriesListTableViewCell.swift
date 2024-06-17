@@ -20,7 +20,7 @@ final class RepositoriesListTableViewCell: UITableViewCell {
     private let repositoryName: UILabel = {
         let label = UILabel()
         label.textColor = Colors.repositoryNameLabel
-        label.font = Fonts.textFieldsFont
+        label.font = Fonts.highFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -28,7 +28,7 @@ final class RepositoriesListTableViewCell: UITableViewCell {
     private let repositoryLanguage: UILabel = {
         let label = UILabel()
         label.textColor = Colors.textColor
-        label.font = Fonts.errorAlertFont
+        label.font = Fonts.smallFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -44,7 +44,7 @@ final class RepositoriesListTableViewCell: UITableViewCell {
     private let repositoryDescription: UILabel = {
         let label = UILabel()
         label.textColor = Colors.textColor
-        label.font = Fonts.repositoryDescriptionFont
+        label.font = Fonts.middleFont
         label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -9,6 +9,13 @@ import UIKit
 
 final class RepositoriesListView: UIView {
     
+    private let navigationBarSeparator: UIView = {
+        let separatorLine = UIView()
+        separatorLine.backgroundColor = Colors.separatorColor
+        separatorLine.translatesAutoresizingMaskIntoConstraints = false
+        return separatorLine
+    }()
+    
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = Colors.cellBackground
@@ -42,6 +49,7 @@ private extension RepositoriesListView {
     
     func addSubviews() {
         addSubview(tableView)
+        addSubview(navigationBarSeparator)
     }
     
     func setupConstraints() {
@@ -49,7 +57,11 @@ private extension RepositoriesListView {
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            navigationBarSeparator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            navigationBarSeparator.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
+            navigationBarSeparator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            navigationBarSeparator.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }

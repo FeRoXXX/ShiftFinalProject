@@ -19,9 +19,9 @@ final class AuthView: UIView {
     
     let accessTokenTextField: UITextField = {
         let textField = UITextField()
-        textField.font = Fonts.textFieldsFont
+        textField.font = Fonts.highFont
         textField.textColor = Colors.textColor
-        textField.attributedPlaceholder = NSAttributedString(string: MokoText.AuthViewText.placeholderText,
+        textField.attributedPlaceholder = NSAttributedString(string: MockText.AuthViewText.placeholderText,
                                                              attributes: Fonts.textFieldsPlaceholderFont)
         textField.layer.borderColor = Colors.placeholderAndNoSelectedColor.cgColor
         textField.layer.cornerRadius = UIElementSetting.cornerRadius
@@ -35,9 +35,9 @@ final class AuthView: UIView {
     
     private let errorAlertLabel: UILabel = {
         let label = UILabel()
-        label.text = MokoText.AuthViewText.errorText
+        label.text = MockText.AuthViewText.errorText
         label.textColor = Colors.errorColor
-        label.font = Fonts.errorAlertFont
+        label.font = Fonts.smallFont
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,7 +45,7 @@ final class AuthView: UIView {
     
     private lazy var signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle(MokoText.AuthViewText.buttonText, for: .normal)
+        button.setTitle(MockText.AuthViewText.buttonText, for: .normal)
         button.layer.cornerRadius = UIElementSetting.cornerRadius
         button.layer.masksToBounds = true
         button.layer.borderWidth = UIElementSetting.borderWidth

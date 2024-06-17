@@ -18,6 +18,25 @@ enum Colors {
     static let cellBackground = UIColor.clear
     static let separatorColor = #colorLiteral(red: 0.1294117647, green: 0.1490196078, blue: 0.1764705882, alpha: 1)
     static let navigationBarItemsColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let clearColor = UIColor.clear
+    static let urlFontColor = #colorLiteral(red: 0.4101545811, green: 0.7174265981, blue: 1, alpha: 1)
+    
+    enum StatColors {
+        static let starsColor = #colorLiteral(red: 0.9866850972, green: 0.8703593612, blue: 0.5349690318, alpha: 1)
+        static let forksColor = #colorLiteral(red: 0.4924672246, green: 0.8465851545, blue: 0.513483882, alpha: 1)
+        static let watchersColor = #colorLiteral(red: 0.6637072563, green: 0.9943711162, blue: 0.9817327857, alpha: 1)
+        
+        static func getStatColor(by statName: RepositoryStatName) -> UIColor {
+            switch statName {
+            case .stars:
+                starsColor
+            case .forks:
+                forksColor
+            case .watchers:
+                watchersColor
+            }
+        }
+    }
 }
 
 enum LanguageColors: String {

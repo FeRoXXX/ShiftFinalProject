@@ -45,10 +45,11 @@ private extension RepositoriesListViewController {
         navigationItem.rightBarButtonItems = [button]
         navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
         navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     func setupTitle() {
-        title = MokoText.RepositoriesListText.titleText
+        title = MockText.RepositoriesListText.titleText
     }
 }
 

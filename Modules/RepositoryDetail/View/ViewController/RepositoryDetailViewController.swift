@@ -11,9 +11,11 @@ final class RepositoryDetailViewController: UIViewController {
     
     private lazy var componentView = RepositoryDetailView()
     private let presenter: IRepositoryDetailPresenter
+    private let router: IRepositoryDetailRouter
     
-    init(presenter: IRepositoryDetailPresenter) {
+    init(presenter: IRepositoryDetailPresenter, router: IRepositoryDetailRouter) {
         self.presenter = presenter
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,6 +28,7 @@ final class RepositoryDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        router.setupRouter(self)
         presenter.viewLoaded(ui: self)
     }
 }
@@ -38,9 +41,13 @@ private extension RepositoryDetailViewController {
     }
     
     func setupNavigationBar() {
-        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: nil)
+        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: #selector(quitButtonTapped))
         navigationItem.rightBarButtonItems = [button]
         navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
+    }
+    
+    @objc func quitButtonTapped() {
+        presenter.logOut()
     }
 }
 
@@ -48,5 +55,17 @@ extension RepositoryDetailViewController: IRepositoryDetailViewController {
     
     func setTitle(_ title: String) {
         self.title = title
+    }
+    
+    func setFirstInfo(_ firstInfo: RepositoryDetailFirstInformation) {
+        componentView.setupFirstInfo(firstInfo)
+    }
+    
+    func setupReadme(_ data: String) {
+        componentView.setupReadme(data)
+    }
+    
+    func logOut() {
+        router.routToFirstViewController()
     }
 }

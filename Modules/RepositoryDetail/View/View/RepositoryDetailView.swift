@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarkdownView
 
 final class RepositoryDetailView: UIView {
     
@@ -30,6 +31,14 @@ final class RepositoryDetailView: UIView {
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    private let readMeView: MarkdownView = {
+        let webView = MarkdownView()
+        webView.isOpaque = false
+        webView.backgroundColor = Colors.clearColor
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
     }()
     
     private var repositoryURLLabel: RepositoryURLLabel = RepositoryURLLabel()
@@ -60,6 +69,7 @@ private extension RepositoryDetailView {
     func addSubviews() {
         addSubview(firstInfoStack)
         addSubview(navigationBarSeparator)
+        addSubview(readMeView)
     }
     
     func setupConstraints() {
@@ -70,7 +80,27 @@ private extension RepositoryDetailView {
             navigationBarSeparator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             navigationBarSeparator.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             navigationBarSeparator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            navigationBarSeparator.heightAnchor.constraint(equalToConstant: 1)
+            navigationBarSeparator.heightAnchor.constraint(equalToConstant: 1),
+            readMeView.topAnchor.constraint(equalTo: firstInfoStack.bottomAnchor, constant: 24),
+            readMeView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            readMeView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            readMeView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+extension RepositoryDetailView {
+    
+    func setupFirstInfo(_ firstInfo: RepositoryDetailFirstInformation) {
+        repositoryURLLabel.urlLabel.text = firstInfo.repositoryURL
+        licenseLabel.licenseNameLabel.text = firstInfo.repositoryLicense
+        starLabel.statCountLabel.text = firstInfo.repositoryStars
+        forkLabel.statCountLabel.text = firstInfo.repositoryForks
+        watchersLabel.statCountLabel.text = firstInfo.repositoryWatchers
+    }
+    
+    func setupReadme(_ data: String) {
+        let css = ["body { color:white; }"].joined(separator: "\n")
+        readMeView.load(markdown: data, css: css)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RepositoryStatLabel.swift
+//  LicenseLabel.swift
 //  ShiftFinalProject
 //
 //  Created by Александр Федоткин on 17.06.2024.
@@ -7,45 +7,48 @@
 
 import UIKit
 
-final class RepositoryStatLabel: UIView {
-    
-    private let statName: RepositoryStatName
-    
+final class LicenseLabel: UIView {
     private lazy var horizontalStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [statImageView, statCountLabel, statLabel])
+        let stackView = UIStackView(arrangedSubviews: [mockHorizontalStack, licenseNameLabel])
         stackView.axis = .horizontal
-        stackView.spacing = 4
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
-    private lazy var statImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: ImageNames.RepositoryStat.getImageName(by: statName)))
-        imageView.contentMode = .scaleAspectFit
+    private lazy var mockHorizontalStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [licenseImageView, licenseLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 4
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let licenseImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: ImageNames.License.rawValue))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var statLabel: UILabel = {
+    private let licenseLabel: UILabel = {
         let label = UILabel()
-        label.text = MockText.RepositoryDetailText.RepositoryStatText.getStatText(by: statName)
+        label.text = MockText.RepositoryDetailText.licenseText
         label.font = Fonts.highFont
         label.textColor = Colors.textColor
-        return label
-    }()
-    
-    lazy var statCountLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = Colors.StatColors.getStatColor(by: statName)
-        label.text = "259"
-        label.font = Fonts.highFont
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    init(statName: RepositoryStatName) {
-        self.statName = statName
+    let licenseNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = Fonts.highFont
+        label.textColor = Colors.textColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    init() {
         super.init(frame: .zero)
         setupUI()
     }
@@ -56,7 +59,7 @@ final class RepositoryStatLabel: UIView {
     }
 }
 
-private extension RepositoryStatLabel {
+private extension LicenseLabel {
     
     func setupUI() {
         addSubviews()

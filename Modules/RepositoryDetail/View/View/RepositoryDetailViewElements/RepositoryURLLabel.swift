@@ -9,7 +9,7 @@ import UIKit
 
 final class RepositoryURLLabel: UIView {
     
-    lazy var urlStack: UIStackView = {
+    private lazy var urlStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [urlImageView, urlLabel])
         stackView.axis = .horizontal
         stackView.spacing = 8
@@ -17,15 +17,15 @@ final class RepositoryURLLabel: UIView {
         return stackView
     }()
     
-    let urlImageView: UIImageView = {
+    private let urlImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: ImageNames.URLImage.rawValue))
+        imageView.setContentCompressionResistancePriority(UILayoutPriority(751), for: .horizontal)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     let urlLabel: UILabel = {
         let label = UILabel()
-        label.text = "github.com/icerockdev/moko-resources"
         label.font = Fonts.highFont
         label.textColor = Colors.urlFontColor
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .horizontal)

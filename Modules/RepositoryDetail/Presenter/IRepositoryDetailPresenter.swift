@@ -9,4 +9,5 @@ import Foundation
 
 protocol IRepositoryDetailPresenter {
     func viewLoaded(ui: IRepositoryDetailViewController)
+    func logOut()
 }

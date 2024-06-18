@@ -8,5 +8,8 @@
 import Foundation
 
 protocol IRepositoryDetailDataRepository {
-    func getDetail(chosenRepository: ChoseRepositoryModel, completion: @escaping(Result<GeneralModel, Error>) -> Void)
+    func getDetail(completion: @escaping(Result<RepositoryDetailModel, Error>) -> Void)
+    func getReadme(completion: @escaping (Result<Data, Error>) -> Void)
+    func setupSettings(_ settings: ChoseRepositoryModel)
+    func logOut()
 }

@@ -31,6 +31,10 @@ extension RepositoriesListDataRepository: IRepositoriesListDataRepository {
         }
     }
     
+    func logOut() {
+        NetworkService.getRepositories.logOut()
+    }
+    
     func getRepositories() -> [RepositoriesListModel] {
         return storageData
     }

@@ -10,4 +10,5 @@ import Foundation
 protocol IRepositoriesListDataRepository {
     func getRepositories(completion: @escaping(Result<[RepositoriesListModel], Error>) -> Void)
     func getRepositories() -> [RepositoriesListModel]
+    func logOut()
 }

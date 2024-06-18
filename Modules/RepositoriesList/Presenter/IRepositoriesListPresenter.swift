@@ -10,4 +10,5 @@ import Foundation
 protocol IRepositoriesListPresenter {
     func viewLoaded(ui: IRepositoriesListViewController)
     func showRepository(index: Int)
+    func logOut()
 }

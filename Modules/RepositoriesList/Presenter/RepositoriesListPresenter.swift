@@ -39,7 +39,7 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
                 }
             case .failure(let failure):
                 DispatchQueue.main.async {
-                    print(failure)
+                    print(failure) //TODO: Make alert
                 }
             }
         }
@@ -51,5 +51,10 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
         let detailData = data[index]
         chosenRepository = ChoseRepositoryModel(repositoryName: detailData.name, ownerName: detailData.owner.login)
         ui?.loadNextViewController()
+    }
+    
+    func logOut() {
+        dataRepository.logOut()
+        ui?.logOut()
     }
 }

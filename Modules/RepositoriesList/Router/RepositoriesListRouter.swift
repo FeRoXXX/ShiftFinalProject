@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol IRepositoriesListRouter {
-    
-    func routeToRepositoryDetail()
-    func setupUI(_ viewController: RepositoriesListViewController)
-}
-
 final class RepositoriesListRouter {
     
     private weak var viewController: RepositoriesListViewController?
@@ -33,6 +27,10 @@ extension RepositoriesListRouter: IRepositoriesListRouter {
         
         passDataToDetail(source: dataStore, destination: &destinationDS)
         navigateToDetail(source: viewController, destination: destinationVC)
+    }
+    
+    func routeToFirstViewController() {
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
     
     func setupUI(_ viewController: RepositoriesListViewController) {

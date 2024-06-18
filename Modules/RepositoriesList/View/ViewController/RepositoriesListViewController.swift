@@ -41,7 +41,7 @@ private extension RepositoriesListViewController {
     
     func setupNavigationBarItem() {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.navigationBarItemsColor]
-        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: nil)
+        let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: #selector(quitButtonTapped))
         navigationItem.rightBarButtonItems = [button]
         navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
         navigationItem.setHidesBackButton(true, animated: true)
@@ -50,6 +50,10 @@ private extension RepositoriesListViewController {
     
     func setupTitle() {
         title = MockText.RepositoriesListText.titleText
+    }
+    
+    @objc func quitButtonTapped() {
+        presenter.logOut()
     }
 }
 
@@ -65,6 +69,10 @@ extension RepositoriesListViewController: IRepositoriesListViewController {
     
     func updateData() {
         componentView.updateTable()
+    }
+    
+    func logOut() {
+        router.routeToFirstViewController()
     }
 }
 

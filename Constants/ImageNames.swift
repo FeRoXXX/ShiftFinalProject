@@ -13,6 +13,8 @@ enum ImageNames: String {
     case URLImage
     case License
     case chevronLeft = "chevron.left"
+    case star
+    case starFill = "star.fill"
     enum RepositoryStat: String, CaseIterable {
         case Stars
         case Forks

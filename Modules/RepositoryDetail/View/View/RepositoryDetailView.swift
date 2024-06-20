@@ -41,6 +41,20 @@ final class RepositoryDetailView: UIView {
         return webView
     }()
     
+    private var alertView: AlertView = {
+        let alertView = AlertView()
+        alertView.isHidden = true
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        return alertView
+    }()
+    
+    private var readMeAlertView: AlertView = {
+        let alertView = AlertView()
+        alertView.isHidden = true
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        return alertView
+    }()
+    
     private var repositoryURLLabel: RepositoryURLLabel = RepositoryURLLabel()
     private var licenseLabel: LicenseLabel = LicenseLabel()
     private var starLabel: RepositoryStatLabel = RepositoryStatLabel(statName: .stars)
@@ -70,6 +84,8 @@ private extension RepositoryDetailView {
         addSubview(firstInfoStack)
         addSubview(navigationBarSeparator)
         addSubview(readMeView)
+        addSubview(alertView)
+        addSubview(readMeAlertView)
     }
     
     func setupConstraints() {
@@ -81,10 +97,18 @@ private extension RepositoryDetailView {
             navigationBarSeparator.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             navigationBarSeparator.centerXAnchor.constraint(equalTo: centerXAnchor),
             navigationBarSeparator.heightAnchor.constraint(equalToConstant: 1),
+            alertView.topAnchor.constraint(equalTo: navigationBarSeparator.bottomAnchor),
+            alertView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            alertView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            alertView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             readMeView.topAnchor.constraint(equalTo: firstInfoStack.bottomAnchor, constant: 24),
             readMeView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
             readMeView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            readMeView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            readMeView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            readMeAlertView.topAnchor.constraint(equalTo: firstInfoStack.bottomAnchor, constant: 24),
+            readMeAlertView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            readMeAlertView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            readMeAlertView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
@@ -102,5 +126,25 @@ extension RepositoryDetailView {
     func setupReadme(_ data: String) {
         let css = ["body { color:white; }"].joined(separator: "\n")
         readMeView.load(markdown: data, css: css)
+    }
+    
+    func setupAlert(_ error: Errors.Alerts) {
+        firstInfoStack.isHidden = true
+        readMeView.isHidden = true
+        alertView.isHidden = false
+        alertView.setupElements(error)
+    }
+    
+    func setupReadMeAlert(_ error: Errors.Alerts) {
+        readMeView.isHidden = true
+        readMeAlertView.isHidden = false
+        readMeAlertView.setupElements(error)
+    }
+    
+    func hideAlert() {
+        firstInfoStack.isHidden = false
+        readMeView.isHidden = false
+        alertView.isHidden = true
+        readMeAlertView.isHidden = true
     }
 }

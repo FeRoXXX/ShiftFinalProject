@@ -9,7 +9,7 @@ import Foundation
 
 struct RepositoryDetailFirstInformation {
     let repositoryURL: String
-    let repositoryLicense: String
+    let repositoryLicense: String?
     let repositoryStars: String
     let repositoryForks: String
     let repositoryWatchers: String

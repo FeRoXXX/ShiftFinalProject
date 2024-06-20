@@ -68,4 +68,12 @@ extension RepositoryDetailViewController: IRepositoryDetailViewController {
     func logOut() {
         router.routToFirstViewController()
     }
+    
+    func setupError(_ error: Errors.Alerts) {
+        componentView.setupAlert(error)
+    }
+    
+    func setupReadMeError(_ error: Errors.Alerts) {
+        componentView.setupReadMeAlert(error)
+    }
 }

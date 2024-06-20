@@ -8,7 +8,7 @@
 import Foundation
 
 final class RepositoryDetailDataRepository {
-    private var requestSettings: RequestSettings?
+    private var requestSettings: ChoseRepositoryModel?
 }
 
 extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
@@ -17,12 +17,11 @@ extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
         guard let requestSettings else {
             return completion(.failure(Errors.clientError))
         }
-        NetworkService.getRepository(requestSettings).fetch { [weak self] result in
+        NetworkService.getRepository(requestSettings).fetch { result in
             switch result {
             case .success(let success):
                 switch success {
                 case .repositoryDetailModel(let model):
-                    self?.requestSettings?.branchName = model.default_branch
                     completion(.success(model))
                 default:
                     completion(.failure(Errors.serverError))
@@ -33,9 +32,8 @@ extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
         }
     }
     
-    func getReadme(completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let requestSettings,
-            requestSettings.branchName != nil else {
+    func getReadme(completion: @escaping (Result<ReadmeDataModel, Error>) -> Void) {
+        guard let requestSettings else {
             return completion(.failure(Errors.clientError))
         }
         
@@ -43,8 +41,8 @@ extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
             switch result {
             case .success(let success):
                 switch success {
-                case .repositoryReadme(let data):
-                    completion(.success(data))
+                case .repositoryReadme(let model):
+                    completion(.success(model))
                 default:
                     completion(.failure(Errors.serverError))
                 }
@@ -59,6 +57,6 @@ extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
     }
     
     func setupSettings(_ settings: ChoseRepositoryModel) {
-        requestSettings = RequestSettings(ownerName: settings.ownerName, repositoryName: settings.repositoryName, branchName: nil)
+        requestSettings = settings
     }
 }

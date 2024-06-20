@@ -74,6 +74,10 @@ extension RepositoriesListViewController: IRepositoriesListViewController {
     func logOut() {
         router.routeToFirstViewController()
     }
+    
+    func setupError(_ error: Errors.Alerts) {
+        componentView.setupAlert(error)
+    }
 }
 
 extension RepositoriesListViewController: RepositoriesListTableViewDelegate {

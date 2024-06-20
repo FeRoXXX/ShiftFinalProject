@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Reachability
 
 final class RepositoriesListPresenter: RepositoryListDataStore {
     private weak var ui: IRepositoriesListViewController?
@@ -24,24 +25,32 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
     
     func viewLoaded(ui: IRepositoriesListViewController) {
         self.ui = ui
-        
         ui.setupDataSource(dataSource)
-        dataRepository.getRepositories { result in
-            switch result {
-            case .success(let success):
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    storageData = success.map {
-                        RepositoryDescriptionModel(name: $0.name, language: $0.language, description: $0.description)
+        
+        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
+            self?.dataRepository.getRepositories { result in
+                switch result {
+                case .success(let success):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self else { return }
+                        storageData = success.map {
+                            RepositoryDescriptionModel(name: $0.name, language: $0.language, description: $0.description)
+                        }
+                        if storageData.isEmpty {
+                            ui.setupError(.emptyError)
+                        } else {
+                            dataSource.setupData(storageData)
+                            ui.updateData()
+                        }
                     }
-                    dataSource.setupData(storageData)
-                    ui.updateData()
-                }
-            case .failure(let failure):
-                DispatchQueue.main.async {
-                    print(failure) //TODO: Make alert
+                case .failure(_):
+                    DispatchQueue.main.async {
+                        ui.setupError(.somethingError)
+                    }
                 }
             }
+        } failure: {
+            ui.setupError(.connectionError)
         }
     }
     

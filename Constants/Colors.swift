@@ -37,6 +37,20 @@ enum Colors {
             }
         }
     }
+    
+    enum AlertsColor {
+        static let fatalError = #colorLiteral(red: 0.8417338729, green: 0.3985319436, blue: 0.3816541433, alpha: 1)
+        static let warning = #colorLiteral(red: 0.4101545811, green: 0.7174265981, blue: 1, alpha: 1)
+        
+        static func getAlertsColor(by error: Errors.Alerts) -> UIColor {
+            switch error {
+            case .connectionError, .loadError, .somethingError:
+                fatalError
+            case .emptyError:
+                warning
+            }
+        }
+    }
 }
 
 enum LanguageColors: String {

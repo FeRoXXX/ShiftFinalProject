@@ -38,4 +38,18 @@ enum MockText {
             }
         }
     }
+    
+    enum AlertButtonText: String {
+        case Retry
+        case Refresh
+        
+        static func getText(by error: Errors.Alerts) -> String {
+            switch error {
+            case .connectionError, .loadError, .somethingError:
+                Retry.rawValue
+            case .emptyError:
+                Refresh.rawValue
+            }
+        }
+    }
 }

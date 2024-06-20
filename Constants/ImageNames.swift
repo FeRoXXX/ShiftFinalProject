@@ -15,7 +15,7 @@ enum ImageNames: String {
     case chevronLeft = "chevron.left"
     case star
     case starFill = "star.fill"
-    enum RepositoryStat: String, CaseIterable {
+    enum RepositoryStat: String {
         case Stars
         case Forks
         case Watchers
@@ -28,6 +28,23 @@ enum ImageNames: String {
                 Forks.rawValue
             case .watchers:
                 Watchers.rawValue
+            }
+        }
+    }
+    
+    enum AlertsImage: String {
+        case InternetConnection
+        case Path
+        case Something
+        
+        static func getImageName(by alert: Errors.Alerts) -> String {
+            switch alert {
+            case .connectionError, .loadError:
+                InternetConnection.rawValue
+            case .somethingError:
+                Something.rawValue
+            case .emptyError:
+                Path.rawValue
             }
         }
     }

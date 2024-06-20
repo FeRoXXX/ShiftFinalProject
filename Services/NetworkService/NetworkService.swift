@@ -10,11 +10,14 @@ import Foundation
 enum NetworkService {
     case signIn(token: String)
     case getRepositories
-    case getRepository(_ requestSettings: RequestSettings)
-    case getReadmeFile(_ requestSettings: RequestSettings)
+    case getRepository(_ requestSettings: ChoseRepositoryModel)
+    case getReadmeFile(_ requestSettings: ChoseRepositoryModel)
 
     private var urlSession: URLSession {
         let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 20
+        config.httpAdditionalHeaders = ["Accept": "application/json"]
+        
         return URLSession(configuration: config)
     }
     
@@ -63,45 +66,34 @@ extension NetworkService {
             }
 
             var request = URLRequest(url: baseComponentURL)
-            request.httpMethod = "GET"
 
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
 
             return request
         case .getRepositories:
+            guard let reposURL = reEntryService.getReposURL() else {
+                fatalError() //TODO: Make alert
+            }
             let baseComponent = URLComponents(string: "https://api.github.com/users/icerockdev/repos")
             guard let baseComponentURL = baseComponent?.url else {
                 fatalError() //TODO: Make alert
             }
             
-            var request = URLRequest(url: baseComponentURL)
-            request.httpMethod = "GET"
-            
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            return request
+            return URLRequest(url: baseComponentURL)
         case .getRepository(let requestSettings):
             let baseComponent = URLComponents(string: "https://api.github.com/repos/\(requestSettings.ownerName)/\(requestSettings.repositoryName)")
             guard let baseComponentURL = baseComponent?.url else {
                 fatalError() //TODO: Make alert
             }
             
-            var request = URLRequest(url: baseComponentURL)
-            request.httpMethod = "GET"
-            
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            return request
+            return URLRequest(url: baseComponentURL)
         case .getReadmeFile(let requestSettings):
-            let baseComponent = URLComponents(string: "https://raw.githubusercontent.com/\(requestSettings.ownerName)/\(requestSettings.repositoryName)/\(requestSettings.branchName!)/README.md")
+            let baseComponent = URLComponents(string: "https://api.github.com/repos/\(requestSettings.ownerName)/\(requestSettings.repositoryName)/readme")
             guard let baseComponentURL = baseComponent?.url else {
                 fatalError() //TODO: Make alert
             }
             
-            var request = URLRequest(url: baseComponentURL)
-            request.httpMethod = "GET"
-            
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            return request
+            return URLRequest(url: baseComponentURL)
         }
     }
     
@@ -134,7 +126,12 @@ extension NetworkService {
                 return .failure(error)
             }
         case .getReadmeFile:
-            return .success(GeneralModel.repositoryReadme(data))
+            do {
+                let decodedData = try JSONDecoder().decode(ReadmeDataModel.self, from: data)
+                return .success(GeneralModel.repositoryReadme(decodedData))
+            } catch {
+                return .failure(error)
+            }
         }
     }
 }

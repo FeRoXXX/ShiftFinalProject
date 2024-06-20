@@ -11,5 +11,5 @@ enum GeneralModel {
     case authModel(_ model: AuthDataModel)
     case repositoriesListModel(_ model: [RepositoriesListModel])
     case repositoryDetailModel(_ model: RepositoryDetailModel)
-    case repositoryReadme(_ data: Data)
+    case repositoryReadme(_ model: ReadmeDataModel)
 }

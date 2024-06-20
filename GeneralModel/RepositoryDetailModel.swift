@@ -11,13 +11,36 @@ struct RepositoryDetailModel: Decodable {
     let id: Int
     let name: String
     let url: String
-    let forks_count: Int
-    let stargazers_count: Int
-    let watchers_count: Int
+    let forks: Int
+    let stargazers: Int
+    let watchers: Int
     let default_branch: String
-    let license: License
+    let license: License?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case url
+        case forks = "forks_count"
+        case stargazers = "stargazers_count"
+        case watchers = "watchers_count"
+        case default_branch
+        case license
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        url = try container.decode(String.self, forKey: .url)
+        forks = try container.decode(Int.self, forKey: .forks)
+        stargazers = try container.decode(Int.self, forKey: .stargazers)
+        watchers = try container.decode(Int.self, forKey: .watchers)
+        default_branch = try container.decode(String.self, forKey: .default_branch)
+        license = try container.decodeIfPresent(License.self, forKey: .license)
+    }
 }
 
 struct License: Decodable {
-    let spdx_id: String
+    let spdx_id: String?
 }

@@ -55,6 +55,13 @@ final class AuthView: UIView {
         return button
     }()
     
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: ImageNames.star.rawValue), for: .normal)
+        return button
+    }()
+    
     init(delegate: IAuthViewTextFieldDelegate) {
         accessTokenTextField.delegate = delegate
         super.init(frame: .zero)
@@ -80,6 +87,7 @@ private extension AuthView {
         addSubview(accessTokenTextField)
         addSubview(signInButton)
         addSubview(errorAlertLabel)
+        addSubview(favoriteButton)
     }
     
     func setupConstraints() {
@@ -96,7 +104,10 @@ private extension AuthView {
             signInButton.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor, constant: -16),
             signInButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             signInButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            signInButton.heightAnchor.constraint(equalToConstant: 48)
+            signInButton.heightAnchor.constraint(equalToConstant: 48),
+            favoriteButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
+            favoriteButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

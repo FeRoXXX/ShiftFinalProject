@@ -32,4 +32,8 @@ enum Errors: Error {
             }
         }
     }
+    
+    enum Init: String {
+        case initError = "init(coder:) has not been implemented"
+    }
 }

@@ -19,7 +19,7 @@ struct RepositoryDetailModel: Decodable {
     let description: String?
     let language: String?
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case name
         case url

@@ -46,14 +46,14 @@ extension AuthPresenter: IAuthPresenter {
                 return
         }
         
-        dataRepository.signIn(token: text) { result in
+        dataRepository.signIn(token: text) { [weak self] result in
             switch result {
             case .success(_):
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async {
                     self?.ui?.successAuth()
                 }
             case .failure(_):
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async {
                     self?.ui?.setupErrorTextField()
                 }
             }

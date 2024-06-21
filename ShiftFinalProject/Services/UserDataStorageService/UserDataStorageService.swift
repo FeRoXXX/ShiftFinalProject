@@ -1,5 +1,5 @@
 //
-//  ReEntryService.swift
+//  UserDataStorageService.swift
 //  ShiftFinalProject
 //
 //  Created by Александр Федоткин on 15.06.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ReEntryService {
+final class UserDataStorageService {
     
     private var authToken: String? {
         get {
@@ -22,7 +22,7 @@ final class ReEntryService {
     }
 }
 
-extension ReEntryService: IReEntryService {
+extension UserDataStorageService: IUserDataStorageService {
     
     func getAuthToken() -> String? {
         authToken

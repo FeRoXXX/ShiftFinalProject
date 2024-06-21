@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Reachability
 
 final class RepositoriesListPresenter: RepositoryListDataStore {
     private weak var ui: IRepositoriesListViewController?
@@ -41,10 +40,6 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
     func logOut() {
         dataRepository.logOut()
         ui?.logOut()
-    }
-    
-    func retryButtonClicked() {
-        getData()
     }
     
     func requestData() {

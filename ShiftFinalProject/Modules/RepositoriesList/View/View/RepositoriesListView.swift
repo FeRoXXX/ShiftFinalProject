@@ -47,7 +47,41 @@ final class RepositoriesListView: UIView {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Errors.Init.initError.rawValue)
+    }
+}
+
+extension RepositoriesListView {
+    
+    func setupDataSource(_ dataSource: IRepositoriesListTableViewDataSource) {
+        tableView.dataSource = dataSource
+    }
+    
+    func updateTable() {
+        tableView.reloadData()
+    }
+    
+    func setupAlert(_ error: Errors.Alerts) {
+        tableView.isHidden = true
+        alertView.isHidden = false
+        alertView.setupElements(error)
+    }
+    
+    func startLoading() {
+        tableView.isHidden = true
+        alertView.isHidden = false
+        alertView.startLoading()
+    }
+    
+    func stopLoading() {
+        alertView.stopLoading()
+        tableView.isHidden = true
+        alertView.isHidden = false
+    }
+    
+    func hideAlert() {
+        tableView.isHidden = false
+        alertView.isHidden = true
     }
 }
 
@@ -84,39 +118,5 @@ private extension RepositoriesListView {
     
     func setupRetryButtonTarget() {
         buttonTarget?()
-    }
-}
-
-extension RepositoriesListView {
-    
-    func setupDataSource(_ dataSource: IRepositoriesListTableViewDataSource) {
-        tableView.dataSource = dataSource
-    }
-    
-    func updateTable() {
-        tableView.reloadData()
-    }
-    
-    func setupAlert(_ error: Errors.Alerts) {
-        tableView.isHidden = true
-        alertView.isHidden = false
-        alertView.setupElements(error)
-    }
-    
-    func startLoading() {
-        tableView.isHidden = true
-        alertView.isHidden = false
-        alertView.startLoading()
-    }
-    
-    func stopLoading() {
-        alertView.stopLoading()
-        tableView.isHidden = true
-        alertView.isHidden = false
-    }
-    
-    func hideAlert() {
-        tableView.isHidden = false
-        alertView.isHidden = true
     }
 }

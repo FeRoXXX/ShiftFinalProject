@@ -46,8 +46,8 @@
 		27B5F8912C1B401200E91AB6 /* IAuthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8902C1B401200E91AB6 /* IAuthDataRepository.swift */; };
 		27B5F8932C1B440500E91AB6 /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8922C1B440500E91AB6 /* AuthDataModel.swift */; };
 		27B5F8992C1CAE6A00E91AB6 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8982C1CAE6A00E91AB6 /* AuthRouter.swift */; };
-		27B5F89E2C1DEF7900E91AB6 /* ReEntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */; };
-		27B5F8A02C1DF00700E91AB6 /* IReEntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */; };
+		27B5F89E2C1DEF7900E91AB6 /* UserDataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89D2C1DEF7800E91AB6 /* UserDataStorageService.swift */; };
+		27B5F8A02C1DF00700E91AB6 /* IUserDataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89F2C1DF00700E91AB6 /* IUserDataStorageService.swift */; };
 		27B5F8A32C1DF1F700E91AB6 /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A22C1DF1F700E91AB6 /* GeneralModel.swift */; };
 		27B5F8A52C1DF24C00E91AB6 /* RepositoriesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A42C1DF24C00E91AB6 /* RepositoriesListModel.swift */; };
 		27B5F8AA2C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A92C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift */; };
@@ -119,8 +119,8 @@
 		27B5F8902C1B401200E91AB6 /* IAuthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthDataRepository.swift; sourceTree = "<group>"; };
 		27B5F8922C1B440500E91AB6 /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
 		27B5F8982C1CAE6A00E91AB6 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
-		27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEntryService.swift; sourceTree = "<group>"; };
-		27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IReEntryService.swift; sourceTree = "<group>"; };
+		27B5F89D2C1DEF7800E91AB6 /* UserDataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorageService.swift; sourceTree = "<group>"; };
+		27B5F89F2C1DF00700E91AB6 /* IUserDataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserDataStorageService.swift; sourceTree = "<group>"; };
 		27B5F8A22C1DF1F700E91AB6 /* GeneralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
 		27B5F8A42C1DF24C00E91AB6 /* RepositoriesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListModel.swift; sourceTree = "<group>"; };
 		27B5F8A92C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListDataRepository.swift; sourceTree = "<group>"; };
@@ -394,13 +394,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		27B5F89C2C1DEF4500E91AB6 /* ReEntryService */ = {
+		27B5F89C2C1DEF4500E91AB6 /* UserDataStorageService */ = {
 			isa = PBXGroup;
 			children = (
-				27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */,
-				27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */,
+				27B5F89D2C1DEF7800E91AB6 /* UserDataStorageService.swift */,
+				27B5F89F2C1DF00700E91AB6 /* IUserDataStorageService.swift */,
 			);
-			path = ReEntryService;
+			path = UserDataStorageService;
 			sourceTree = "<group>";
 		};
 		27B5F8A12C1DF1DB00E91AB6 /* GeneralModel */ = {
@@ -535,7 +535,7 @@
 				273F809A2C2444A2008991D4 /* CoreDataService */,
 				273F80972C241D92008991D4 /* NetworkReachabilityService */,
 				27B5F88A2C1B3F3900E91AB6 /* NetworkService */,
-				27B5F89C2C1DEF4500E91AB6 /* ReEntryService */,
+				27B5F89C2C1DEF4500E91AB6 /* UserDataStorageService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -681,7 +681,7 @@
 				27B5F8402C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld in Sources */,
 				27B5F8DD2C20923A00E91AB6 /* RepositoryStatName.swift in Sources */,
 				27B5F8CD2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift in Sources */,
-				27B5F8A02C1DF00700E91AB6 /* IReEntryService.swift in Sources */,
+				27B5F8A02C1DF00700E91AB6 /* IUserDataStorageService.swift in Sources */,
 				27B5F86F2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift in Sources */,
 				27B5F8C72C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift in Sources */,
 				27B5F8AC2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift in Sources */,
@@ -691,7 +691,7 @@
 				27B5F8BD2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift in Sources */,
 				27B5F8932C1B440500E91AB6 /* AuthDataModel.swift in Sources */,
 				27B5F87C2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift in Sources */,
-				27B5F89E2C1DEF7900E91AB6 /* ReEntryService.swift in Sources */,
+				27B5F89E2C1DEF7900E91AB6 /* UserDataStorageService.swift in Sources */,
 				27B5F8992C1CAE6A00E91AB6 /* AuthRouter.swift in Sources */,
 				27B5F8912C1B401200E91AB6 /* IAuthDataRepository.swift in Sources */,
 				27B5F8AE2C1ED46300E91AB6 /* Errors.swift in Sources */,

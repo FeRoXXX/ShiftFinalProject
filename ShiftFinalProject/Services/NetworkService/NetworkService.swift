@@ -25,8 +25,8 @@ enum NetworkService {
         return URLSession(configuration: config)
     }
     
-    private var reEntryService: IReEntryService {
-        let reEntryService = ReEntryService()
+    private var reEntryService: IUserDataStorageService {
+        let reEntryService = UserDataStorageService()
         return reEntryService
     }
 }
@@ -74,7 +74,7 @@ extension NetworkService {
         case .signIn(let token):
             let baseComponent = URLComponents(string: "https://api.github.com/user")
             guard let baseComponentURL = baseComponent?.url else {
-                fatalError() //TODO: MAKE ALERT
+                fatalError(Errors.Alerts.somethingError.rawValue)
             }
 
             var request = URLRequest(url: baseComponentURL)
@@ -84,25 +84,25 @@ extension NetworkService {
             return request
         case .getRepositories:
             guard let reposURL = reEntryService.getReposURL() else {
-                fatalError() //TODO: Make alert
+                fatalError(Errors.Alerts.somethingError.rawValue)
             }
             let baseComponent = URLComponents(string: "https://api.github.com/users/icerockdev/repos")
             guard let baseComponentURL = baseComponent?.url else {
-                fatalError() //TODO: Make alert
+                fatalError(Errors.Alerts.somethingError.rawValue)
             }
             
             return URLRequest(url: baseComponentURL)
         case .getRepository(let requestSettings):
             let baseComponent = URLComponents(string: "https://api.github.com/repos/\(requestSettings.ownerName)/\(requestSettings.repositoryName)")
             guard let baseComponentURL = baseComponent?.url else {
-                fatalError() //TODO: Make alert
+                fatalError(Errors.Alerts.somethingError.rawValue)
             }
             
             return URLRequest(url: baseComponentURL)
         case .getReadmeFile(let requestSettings):
             let baseComponent = URLComponents(string: "https://api.github.com/repos/\(requestSettings.ownerName)/\(requestSettings.repositoryName)/readme")
             guard let baseComponentURL = baseComponent?.url else {
-                fatalError() //TODO: Make alert
+                fatalError(Errors.Alerts.somethingError.rawValue)
             }
             
             return URLRequest(url: baseComponentURL)

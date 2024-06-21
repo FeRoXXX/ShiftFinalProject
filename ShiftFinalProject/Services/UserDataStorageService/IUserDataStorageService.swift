@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol IReEntryService {
+protocol IUserDataStorageService {
     func getAuthToken() -> String?
     func setAuthToken(token: String)
     func getReposURL() -> String?

@@ -57,7 +57,36 @@ final class AlertView: UIView {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Errors.Init.initError.rawValue)
+    }
+}
+
+extension AlertView {
+    
+    func setupElements(_ error: Errors.Alerts) {
+        alertImageView.image = UIImage(named: ImageNames.AlertsImage.getImageName(by: error))
+        alertText.textColor = Colors.AlertsColor.getAlertsColor(by: error)
+        alertText.text = error.rawValue
+        alertDescriptionText.text = Errors.Alerts.getDescription(by: error)
+        retryButton.setTitle(MockText.AlertButtonText.getText(by: error), for: .normal)
+    }
+    
+    func startLoading() {
+        alertText.isHidden = true
+        alertImageView.isHidden = true
+        alertDescriptionText.isHidden = true
+        retryButton.isHidden = true
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        loadingIndicator.stopAnimating()
+        alertText.isHidden = false
+        alertImageView.isHidden = false
+        alertDescriptionText.isHidden = false
+        retryButton.isHidden = false
+        loadingIndicator.isHidden = true
     }
 }
 
@@ -96,34 +125,5 @@ private extension AlertView {
     
     @objc func buttonTriggered() {
         buttonTarget?()
-    }
-}
-
-extension AlertView {
-    
-    func setupElements(_ error: Errors.Alerts) {
-        alertImageView.image = UIImage(named: ImageNames.AlertsImage.getImageName(by: error))
-        alertText.textColor = Colors.AlertsColor.getAlertsColor(by: error)
-        alertText.text = error.rawValue
-        alertDescriptionText.text = Errors.Alerts.getDescription(by: error)
-        retryButton.setTitle(MockText.AlertButtonText.getText(by: error), for: .normal)
-    }
-    
-    func startLoading() {
-        alertText.isHidden = true
-        alertImageView.isHidden = true
-        alertDescriptionText.isHidden = true
-        retryButton.isHidden = true
-        loadingIndicator.isHidden = false
-        loadingIndicator.startAnimating()
-    }
-    
-    func stopLoading() {
-        loadingIndicator.stopAnimating()
-        alertText.isHidden = false
-        alertImageView.isHidden = false
-        alertDescriptionText.isHidden = false
-        retryButton.isHidden = false
-        loadingIndicator.isHidden = true
     }
 }

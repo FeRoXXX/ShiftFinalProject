@@ -1,0 +1,971 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		273F808F2C23F4EF008991D4 /* ReadmeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F808E2C23F4EF008991D4 /* ReadmeDataModel.swift */; };
+		273F80932C240A21008991D4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F80922C240A21008991D4 /* AlertView.swift */; };
+		273F80962C241C81008991D4 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 273F80952C241C81008991D4 /* Reachability */; };
+		273F80992C241DBA008991D4 /* NetworkReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F80982C241DBA008991D4 /* NetworkReachabilityService.swift */; };
+		273F80A62C244D83008991D4 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F80A52C244D83008991D4 /* CoreDataService.swift */; };
+		273F80AD2C2467F3008991D4 /* RepositoryDetail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F80AB2C2467F3008991D4 /* RepositoryDetail+CoreDataClass.swift */; };
+		273F80AE2C2467F3008991D4 /* RepositoryDetail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F80AC2C2467F3008991D4 /* RepositoryDetail+CoreDataProperties.swift */; };
+		27B5F8362C1740DE00E91AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8352C1740DE00E91AB6 /* AppDelegate.swift */; };
+		27B5F8382C1740DE00E91AB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8372C1740DE00E91AB6 /* SceneDelegate.swift */; };
+		27B5F8402C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F83E2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld */; };
+		27B5F8422C1740E000E91AB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B5F8412C1740E000E91AB6 /* Assets.xcassets */; };
+		27B5F8452C1740E000E91AB6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 27B5F8442C1740E000E91AB6 /* Base */; };
+		27B5F8562C18798F00E91AB6 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8552C18798F00E91AB6 /* AuthViewController.swift */; };
+		27B5F8582C1879BF00E91AB6 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8572C1879BF00E91AB6 /* AuthView.swift */; };
+		27B5F85D2C187AF900E91AB6 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F85C2C187AF900E91AB6 /* ImageNames.swift */; };
+		27B5F85F2C187B3C00E91AB6 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F85E2C187B3C00E91AB6 /* Fonts.swift */; };
+		27B5F8612C187BCC00E91AB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8602C187BCC00E91AB6 /* Colors.swift */; };
+		27B5F8632C187CCC00E91AB6 /* MockText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8622C187CCC00E91AB6 /* MockText.swift */; };
+		27B5F8652C187D9900E91AB6 /* UIElementSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8642C187D9900E91AB6 /* UIElementSetting.swift */; };
+		27B5F8672C1880CA00E91AB6 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8662C1880CA00E91AB6 /* AuthAssembly.swift */; };
+		27B5F8692C188EB000E91AB6 /* IAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8682C188EB000E91AB6 /* IAuthViewController.swift */; };
+		27B5F86B2C188EC000E91AB6 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F86A2C188EC000E91AB6 /* AuthPresenter.swift */; };
+		27B5F86D2C188EC900E91AB6 /* IAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F86C2C188EC900E91AB6 /* IAuthPresenter.swift */; };
+		27B5F86F2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F86E2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift */; };
+		27B5F8752C19EF8E00E91AB6 /* RepositoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8742C19EF8E00E91AB6 /* RepositoriesListView.swift */; };
+		27B5F8772C19EF9A00E91AB6 /* RepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8762C19EF9A00E91AB6 /* RepositoriesListViewController.swift */; };
+		27B5F8792C19EFAA00E91AB6 /* RepositoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8782C19EFAA00E91AB6 /* RepositoriesListPresenter.swift */; };
+		27B5F87C2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F87B2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift */; };
+		27B5F87F2C19EFD800E91AB6 /* RepositoriesListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F87E2C19EFD800E91AB6 /* RepositoriesListTableViewDataSource.swift */; };
+		27B5F8812C19EFEB00E91AB6 /* RepositoriesListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8802C19EFEB00E91AB6 /* RepositoriesListTableViewDelegate.swift */; };
+		27B5F8832C19F20600E91AB6 /* IRepositoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8822C19F20600E91AB6 /* IRepositoriesListViewController.swift */; };
+		27B5F8852C19F3D400E91AB6 /* RepositoriesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8842C19F3D400E91AB6 /* RepositoriesListTableViewCell.swift */; };
+		27B5F8872C19FB4800E91AB6 /* RepositoryDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8862C19FB4800E91AB6 /* RepositoryDescriptionModel.swift */; };
+		27B5F8892C19FEC700E91AB6 /* RepositoriesListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8882C19FEC700E91AB6 /* RepositoriesListAssembly.swift */; };
+		27B5F88C2C1B3F4C00E91AB6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F88B2C1B3F4C00E91AB6 /* NetworkService.swift */; };
+		27B5F88F2C1B3FF800E91AB6 /* AuthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F88E2C1B3FF800E91AB6 /* AuthDataRepository.swift */; };
+		27B5F8912C1B401200E91AB6 /* IAuthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8902C1B401200E91AB6 /* IAuthDataRepository.swift */; };
+		27B5F8932C1B440500E91AB6 /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8922C1B440500E91AB6 /* AuthDataModel.swift */; };
+		27B5F8992C1CAE6A00E91AB6 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8982C1CAE6A00E91AB6 /* AuthRouter.swift */; };
+		27B5F89E2C1DEF7900E91AB6 /* ReEntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */; };
+		27B5F8A02C1DF00700E91AB6 /* IReEntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */; };
+		27B5F8A32C1DF1F700E91AB6 /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A22C1DF1F700E91AB6 /* GeneralModel.swift */; };
+		27B5F8A52C1DF24C00E91AB6 /* RepositoriesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A42C1DF24C00E91AB6 /* RepositoriesListModel.swift */; };
+		27B5F8AA2C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8A92C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift */; };
+		27B5F8AC2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8AB2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift */; };
+		27B5F8AE2C1ED46300E91AB6 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8AD2C1ED46300E91AB6 /* Errors.swift */; };
+		27B5F8B12C1EEA6C00E91AB6 /* RepositoriesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8B02C1EEA6C00E91AB6 /* RepositoriesListRouter.swift */; };
+		27B5F8B32C1EF61A00E91AB6 /* RepositoryListDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8B22C1EF61A00E91AB6 /* RepositoryListDataStore.swift */; };
+		27B5F8B52C1EF65E00E91AB6 /* ChoseRepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8B42C1EF65E00E91AB6 /* ChoseRepositoryModel.swift */; };
+		27B5F8BD2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8BC2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift */; };
+		27B5F8BF2C1EFD8300E91AB6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8BE2C1EFD8300E91AB6 /* RepositoryDetailViewController.swift */; };
+		27B5F8C12C1EFD8C00E91AB6 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8C02C1EFD8C00E91AB6 /* RepositoryDetailView.swift */; };
+		27B5F8C32C1EFE5700E91AB6 /* RepositoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8C22C1EFE5700E91AB6 /* RepositoryDetailPresenter.swift */; };
+		27B5F8C52C1EFE7500E91AB6 /* IRepositoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8C42C1EFE7500E91AB6 /* IRepositoryDetailPresenter.swift */; };
+		27B5F8C72C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8C62C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift */; };
+		27B5F8C92C1EFF5200E91AB6 /* RepositoryDetailDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8C82C1EFF5200E91AB6 /* RepositoryDetailDataStore.swift */; };
+		27B5F8CB2C1F0CA800E91AB6 /* RepositoryDetailDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8CA2C1F0CA800E91AB6 /* RepositoryDetailDataRepository.swift */; };
+		27B5F8CD2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8CC2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift */; };
+		27B5F8CF2C20787400E91AB6 /* RepositoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8CE2C20787400E91AB6 /* RepositoryDetailModel.swift */; };
+		27B5F8D22C207BED00E91AB6 /* RepositoryURLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8D12C207BED00E91AB6 /* RepositoryURLLabel.swift */; };
+		27B5F8D62C20824500E91AB6 /* LicenseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8D52C20824500E91AB6 /* LicenseLabel.swift */; };
+		27B5F8DA2C208ED400E91AB6 /* RepositoryStatLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8D92C208ED400E91AB6 /* RepositoryStatLabel.swift */; };
+		27B5F8DD2C20923A00E91AB6 /* RepositoryStatName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8DC2C20923A00E91AB6 /* RepositoryStatName.swift */; };
+		27B5F8DF2C219D7500E91AB6 /* RequestSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8DE2C219D7500E91AB6 /* RequestSettings.swift */; };
+		27B5F8E32C21A3B500E91AB6 /* RepositoryDetailFirstInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8E22C21A3B500E91AB6 /* RepositoryDetailFirstInformation.swift */; };
+		27B5F8E92C21D5C300E91AB6 /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = 27B5F8E82C21D5C300E91AB6 /* MarkdownView */; };
+		27B5F8EC2C21E4BD00E91AB6 /* RepositoryDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8EB2C21E4BD00E91AB6 /* RepositoryDetailRouter.swift */; };
+		27B5F8EE2C21E4D300E91AB6 /* IRepositoryDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8ED2C21E4D300E91AB6 /* IRepositoryDetailRouter.swift */; };
+		27B5F8F42C21EBD400E91AB6 /* IRepositoriesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5F8F32C21EBD400E91AB6 /* IRepositoriesListRouter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		273F808E2C23F4EF008991D4 /* ReadmeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadmeDataModel.swift; sourceTree = "<group>"; };
+		273F80922C240A21008991D4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		273F80982C241DBA008991D4 /* NetworkReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityService.swift; sourceTree = "<group>"; };
+		273F80A52C244D83008991D4 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		273F80AB2C2467F3008991D4 /* RepositoryDetail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositoryDetail+CoreDataClass.swift"; sourceTree = "<group>"; };
+		273F80AC2C2467F3008991D4 /* RepositoryDetail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositoryDetail+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27B5F8322C1740DE00E91AB6 /* ShiftFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B5F8352C1740DE00E91AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27B5F8372C1740DE00E91AB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		27B5F83F2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftFinalProject.xcdatamodel; sourceTree = "<group>"; };
+		27B5F8412C1740E000E91AB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27B5F8442C1740E000E91AB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27B5F8462C1740E000E91AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27B5F8552C18798F00E91AB6 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		27B5F8572C1879BF00E91AB6 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		27B5F85C2C187AF900E91AB6 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
+		27B5F85E2C187B3C00E91AB6 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		27B5F8602C187BCC00E91AB6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		27B5F8622C187CCC00E91AB6 /* MockText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockText.swift; sourceTree = "<group>"; };
+		27B5F8642C187D9900E91AB6 /* UIElementSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementSetting.swift; sourceTree = "<group>"; };
+		27B5F8662C1880CA00E91AB6 /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		27B5F8682C188EB000E91AB6 /* IAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthViewController.swift; sourceTree = "<group>"; };
+		27B5F86A2C188EC000E91AB6 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		27B5F86C2C188EC900E91AB6 /* IAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthPresenter.swift; sourceTree = "<group>"; };
+		27B5F86E2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthViewTextFieldDelegate.swift; sourceTree = "<group>"; };
+		27B5F8742C19EF8E00E91AB6 /* RepositoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListView.swift; sourceTree = "<group>"; };
+		27B5F8762C19EF9A00E91AB6 /* RepositoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewController.swift; sourceTree = "<group>"; };
+		27B5F8782C19EFAA00E91AB6 /* RepositoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListPresenter.swift; sourceTree = "<group>"; };
+		27B5F87B2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoriesListPresenter.swift; sourceTree = "<group>"; };
+		27B5F87E2C19EFD800E91AB6 /* RepositoriesListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListTableViewDataSource.swift; sourceTree = "<group>"; };
+		27B5F8802C19EFEB00E91AB6 /* RepositoriesListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListTableViewDelegate.swift; sourceTree = "<group>"; };
+		27B5F8822C19F20600E91AB6 /* IRepositoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoriesListViewController.swift; sourceTree = "<group>"; };
+		27B5F8842C19F3D400E91AB6 /* RepositoriesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListTableViewCell.swift; sourceTree = "<group>"; };
+		27B5F8862C19FB4800E91AB6 /* RepositoryDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDescriptionModel.swift; sourceTree = "<group>"; };
+		27B5F8882C19FEC700E91AB6 /* RepositoriesListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListAssembly.swift; sourceTree = "<group>"; };
+		27B5F88B2C1B3F4C00E91AB6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		27B5F88E2C1B3FF800E91AB6 /* AuthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8902C1B401200E91AB6 /* IAuthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAuthDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8922C1B440500E91AB6 /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
+		27B5F8982C1CAE6A00E91AB6 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEntryService.swift; sourceTree = "<group>"; };
+		27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IReEntryService.swift; sourceTree = "<group>"; };
+		27B5F8A22C1DF1F700E91AB6 /* GeneralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
+		27B5F8A42C1DF24C00E91AB6 /* RepositoriesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListModel.swift; sourceTree = "<group>"; };
+		27B5F8A92C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8AB2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoriesListDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8AD2C1ED46300E91AB6 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		27B5F8B02C1EEA6C00E91AB6 /* RepositoriesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListRouter.swift; sourceTree = "<group>"; };
+		27B5F8B22C1EF61A00E91AB6 /* RepositoryListDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListDataStore.swift; sourceTree = "<group>"; };
+		27B5F8B42C1EF65E00E91AB6 /* ChoseRepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseRepositoryModel.swift; sourceTree = "<group>"; };
+		27B5F8BC2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailAssembly.swift; sourceTree = "<group>"; };
+		27B5F8BE2C1EFD8300E91AB6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		27B5F8C02C1EFD8C00E91AB6 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
+		27B5F8C22C1EFE5700E91AB6 /* RepositoryDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepositoryDetailPresenter.swift; path = ShiftFinalProject/Modules/RepositoryDetail/View/RepositoryDetailPresenter.swift; sourceTree = SOURCE_ROOT; };
+		27B5F8C42C1EFE7500E91AB6 /* IRepositoryDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoryDetailPresenter.swift; sourceTree = "<group>"; };
+		27B5F8C62C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		27B5F8C82C1EFF5200E91AB6 /* RepositoryDetailDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailDataStore.swift; sourceTree = "<group>"; };
+		27B5F8CA2C1F0CA800E91AB6 /* RepositoryDetailDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8CC2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoryDetailDataRepository.swift; sourceTree = "<group>"; };
+		27B5F8CE2C20787400E91AB6 /* RepositoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailModel.swift; sourceTree = "<group>"; };
+		27B5F8D12C207BED00E91AB6 /* RepositoryURLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryURLLabel.swift; sourceTree = "<group>"; };
+		27B5F8D52C20824500E91AB6 /* LicenseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseLabel.swift; sourceTree = "<group>"; };
+		27B5F8D92C208ED400E91AB6 /* RepositoryStatLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryStatLabel.swift; sourceTree = "<group>"; };
+		27B5F8DC2C20923A00E91AB6 /* RepositoryStatName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryStatName.swift; sourceTree = "<group>"; };
+		27B5F8DE2C219D7500E91AB6 /* RequestSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSettings.swift; sourceTree = "<group>"; };
+		27B5F8E22C21A3B500E91AB6 /* RepositoryDetailFirstInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailFirstInformation.swift; sourceTree = "<group>"; };
+		27B5F8EB2C21E4BD00E91AB6 /* RepositoryDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailRouter.swift; sourceTree = "<group>"; };
+		27B5F8ED2C21E4D300E91AB6 /* IRepositoryDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoryDetailRouter.swift; sourceTree = "<group>"; };
+		27B5F8F32C21EBD400E91AB6 /* IRepositoriesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRepositoriesListRouter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27B5F82F2C1740DE00E91AB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5F8E92C21D5C300E91AB6 /* MarkdownView in Frameworks */,
+				273F80962C241C81008991D4 /* Reachability in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		273F80902C2409EB008991D4 /* GlobalView */ = {
+			isa = PBXGroup;
+			children = (
+				273F80912C240A16008991D4 /* Alerts */,
+			);
+			path = GlobalView;
+			sourceTree = "<group>";
+		};
+		273F80912C240A16008991D4 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				273F80922C240A21008991D4 /* AlertView.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		273F80972C241D92008991D4 /* NetworkReachabilityService */ = {
+			isa = PBXGroup;
+			children = (
+				273F80982C241DBA008991D4 /* NetworkReachabilityService.swift */,
+			);
+			path = NetworkReachabilityService;
+			sourceTree = "<group>";
+		};
+		273F809A2C2444A2008991D4 /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				273F80AB2C2467F3008991D4 /* RepositoryDetail+CoreDataClass.swift */,
+				273F80AC2C2467F3008991D4 /* RepositoryDetail+CoreDataProperties.swift */,
+				27B5F83E2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld */,
+				273F80A52C244D83008991D4 /* CoreDataService.swift */,
+			);
+			path = CoreDataService;
+			sourceTree = "<group>";
+		};
+		27B5F8292C1740DE00E91AB6 = {
+			isa = PBXGroup;
+			children = (
+				27B5F8342C1740DE00E91AB6 /* ShiftFinalProject */,
+				27B5F8332C1740DE00E91AB6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27B5F8332C1740DE00E91AB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8322C1740DE00E91AB6 /* ShiftFinalProject.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27B5F8342C1740DE00E91AB6 /* ShiftFinalProject */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8EF2C21EA5C00E91AB6 /* Services */,
+				27B5F8A12C1DF1DB00E91AB6 /* GeneralModel */,
+				27B5F8592C187ADE00E91AB6 /* Constants */,
+				27B5F84F2C18795700E91AB6 /* Modules */,
+				27B5F84E2C17426900E91AB6 /* Recources */,
+				27B5F84D2C17426500E91AB6 /* Base */,
+				27B5F84C2C17426000E91AB6 /* App */,
+			);
+			path = ShiftFinalProject;
+			sourceTree = "<group>";
+		};
+		27B5F84C2C17426000E91AB6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8352C1740DE00E91AB6 /* AppDelegate.swift */,
+				27B5F8372C1740DE00E91AB6 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		27B5F84D2C17426500E91AB6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8432C1740E000E91AB6 /* LaunchScreen.storyboard */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		27B5F84E2C17426900E91AB6 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8412C1740E000E91AB6 /* Assets.xcassets */,
+				27B5F8462C1740E000E91AB6 /* Info.plist */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
+		27B5F84F2C18795700E91AB6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				273F80902C2409EB008991D4 /* GlobalView */,
+				27B5F8B62C1EFBDA00E91AB6 /* RepositoryDetail */,
+				27B5F8702C19EEF400E91AB6 /* RepositoriesList */,
+				27B5F8502C18795F00E91AB6 /* AuthScreen */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		27B5F8502C18795F00E91AB6 /* AuthScreen */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8972C1CAE6000E91AB6 /* Router */,
+				27B5F88D2C1B3FE900E91AB6 /* Model */,
+				27B5F8542C18798200E91AB6 /* Assembly */,
+				27B5F8532C18797600E91AB6 /* Presenter */,
+				27B5F8522C18797000E91AB6 /* View */,
+			);
+			path = AuthScreen;
+			sourceTree = "<group>";
+		};
+		27B5F8522C18797000E91AB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8552C18798F00E91AB6 /* AuthViewController.swift */,
+				27B5F8572C1879BF00E91AB6 /* AuthView.swift */,
+				27B5F8682C188EB000E91AB6 /* IAuthViewController.swift */,
+				27B5F86E2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27B5F8532C18797600E91AB6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F86A2C188EC000E91AB6 /* AuthPresenter.swift */,
+				27B5F86C2C188EC900E91AB6 /* IAuthPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		27B5F8542C18798200E91AB6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8662C1880CA00E91AB6 /* AuthAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		27B5F8592C187ADE00E91AB6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F85C2C187AF900E91AB6 /* ImageNames.swift */,
+				27B5F85E2C187B3C00E91AB6 /* Fonts.swift */,
+				27B5F8602C187BCC00E91AB6 /* Colors.swift */,
+				27B5F8622C187CCC00E91AB6 /* MockText.swift */,
+				27B5F8642C187D9900E91AB6 /* UIElementSetting.swift */,
+				27B5F8AD2C1ED46300E91AB6 /* Errors.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		27B5F8702C19EEF400E91AB6 /* RepositoriesList */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8AF2C1EEA6000E91AB6 /* Router */,
+				27B5F8A62C1DFD1900E91AB6 /* Model */,
+				27B5F87D2C19EFCA00E91AB6 /* Support */,
+				27B5F8732C19EF6400E91AB6 /* Presenter */,
+				27B5F8722C19EF6000E91AB6 /* View */,
+				27B5F8712C19EF5100E91AB6 /* Assembly */,
+			);
+			path = RepositoriesList;
+			sourceTree = "<group>";
+		};
+		27B5F8712C19EF5100E91AB6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8882C19FEC700E91AB6 /* RepositoriesListAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		27B5F8722C19EF6000E91AB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8F12C21EB7700E91AB6 /* View */,
+				27B5F8F02C21EB7000E91AB6 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27B5F8732C19EF6400E91AB6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8782C19EFAA00E91AB6 /* RepositoriesListPresenter.swift */,
+				27B5F87B2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift */,
+				27B5F8B22C1EF61A00E91AB6 /* RepositoryListDataStore.swift */,
+				27B5F8B42C1EF65E00E91AB6 /* ChoseRepositoryModel.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		27B5F87D2C19EFCA00E91AB6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F87E2C19EFD800E91AB6 /* RepositoriesListTableViewDataSource.swift */,
+				27B5F8802C19EFEB00E91AB6 /* RepositoriesListTableViewDelegate.swift */,
+				27B5F8862C19FB4800E91AB6 /* RepositoryDescriptionModel.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		27B5F88A2C1B3F3900E91AB6 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F88B2C1B3F4C00E91AB6 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		27B5F88D2C1B3FE900E91AB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F88E2C1B3FF800E91AB6 /* AuthDataRepository.swift */,
+				27B5F8902C1B401200E91AB6 /* IAuthDataRepository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27B5F8972C1CAE6000E91AB6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8982C1CAE6A00E91AB6 /* AuthRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		27B5F89C2C1DEF4500E91AB6 /* ReEntryService */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F89D2C1DEF7800E91AB6 /* ReEntryService.swift */,
+				27B5F89F2C1DF00700E91AB6 /* IReEntryService.swift */,
+			);
+			path = ReEntryService;
+			sourceTree = "<group>";
+		};
+		27B5F8A12C1DF1DB00E91AB6 /* GeneralModel */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8A22C1DF1F700E91AB6 /* GeneralModel.swift */,
+				27B5F8A42C1DF24C00E91AB6 /* RepositoriesListModel.swift */,
+				27B5F8922C1B440500E91AB6 /* AuthDataModel.swift */,
+				27B5F8CE2C20787400E91AB6 /* RepositoryDetailModel.swift */,
+				273F808E2C23F4EF008991D4 /* ReadmeDataModel.swift */,
+			);
+			path = GeneralModel;
+			sourceTree = "<group>";
+		};
+		27B5F8A62C1DFD1900E91AB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8A92C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift */,
+				27B5F8AB2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27B5F8AF2C1EEA6000E91AB6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8B02C1EEA6C00E91AB6 /* RepositoriesListRouter.swift */,
+				27B5F8F32C21EBD400E91AB6 /* IRepositoriesListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		27B5F8B62C1EFBDA00E91AB6 /* RepositoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8EA2C21E4A800E91AB6 /* Router */,
+				27B5F8BB2C1EFC2000E91AB6 /* Assembly */,
+				27B5F8B92C1EFBFC00E91AB6 /* Model */,
+				27B5F8B82C1EFBF500E91AB6 /* Presenter */,
+				27B5F8B72C1EFBEE00E91AB6 /* View */,
+			);
+			path = RepositoryDetail;
+			sourceTree = "<group>";
+		};
+		27B5F8B72C1EFBEE00E91AB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8E12C21A37200E91AB6 /* ViewController */,
+				27B5F8E02C21A36C00E91AB6 /* View */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27B5F8B82C1EFBF500E91AB6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8C22C1EFE5700E91AB6 /* RepositoryDetailPresenter.swift */,
+				27B5F8C42C1EFE7500E91AB6 /* IRepositoryDetailPresenter.swift */,
+				27B5F8C82C1EFF5200E91AB6 /* RepositoryDetailDataStore.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		27B5F8B92C1EFBFC00E91AB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8CA2C1F0CA800E91AB6 /* RepositoryDetailDataRepository.swift */,
+				27B5F8CC2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift */,
+				27B5F8DE2C219D7500E91AB6 /* RequestSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27B5F8BB2C1EFC2000E91AB6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8BC2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		27B5F8D02C207B9B00E91AB6 /* RepositoryDetailViewElements */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8DB2C20922200E91AB6 /* RepositoryStatLabel */,
+				27B5F8D12C207BED00E91AB6 /* RepositoryURLLabel.swift */,
+				27B5F8D52C20824500E91AB6 /* LicenseLabel.swift */,
+			);
+			path = RepositoryDetailViewElements;
+			sourceTree = "<group>";
+		};
+		27B5F8DB2C20922200E91AB6 /* RepositoryStatLabel */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8D92C208ED400E91AB6 /* RepositoryStatLabel.swift */,
+				27B5F8DC2C20923A00E91AB6 /* RepositoryStatName.swift */,
+			);
+			path = RepositoryStatLabel;
+			sourceTree = "<group>";
+		};
+		27B5F8E02C21A36C00E91AB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8C02C1EFD8C00E91AB6 /* RepositoryDetailView.swift */,
+				27B5F8D02C207B9B00E91AB6 /* RepositoryDetailViewElements */,
+				27B5F8E22C21A3B500E91AB6 /* RepositoryDetailFirstInformation.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27B5F8E12C21A37200E91AB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8C62C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift */,
+				27B5F8BE2C1EFD8300E91AB6 /* RepositoryDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		27B5F8EA2C21E4A800E91AB6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8EB2C21E4BD00E91AB6 /* RepositoryDetailRouter.swift */,
+				27B5F8ED2C21E4D300E91AB6 /* IRepositoryDetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		27B5F8EF2C21EA5C00E91AB6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				273F809A2C2444A2008991D4 /* CoreDataService */,
+				273F80972C241D92008991D4 /* NetworkReachabilityService */,
+				27B5F88A2C1B3F3900E91AB6 /* NetworkService */,
+				27B5F89C2C1DEF4500E91AB6 /* ReEntryService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		27B5F8F02C21EB7000E91AB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8762C19EF9A00E91AB6 /* RepositoriesListViewController.swift */,
+				27B5F8822C19F20600E91AB6 /* IRepositoriesListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		27B5F8F12C21EB7700E91AB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8742C19EF8E00E91AB6 /* RepositoriesListView.swift */,
+				27B5F8F22C21EB7F00E91AB6 /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27B5F8F22C21EB7F00E91AB6 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				27B5F8842C19F3D400E91AB6 /* RepositoriesListTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27B5F8312C1740DE00E91AB6 /* ShiftFinalProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27B5F8492C1740E000E91AB6 /* Build configuration list for PBXNativeTarget "ShiftFinalProject" */;
+			buildPhases = (
+				27B5F82E2C1740DE00E91AB6 /* Sources */,
+				27B5F82F2C1740DE00E91AB6 /* Frameworks */,
+				27B5F8302C1740DE00E91AB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShiftFinalProject;
+			packageProductDependencies = (
+				27B5F8E82C21D5C300E91AB6 /* MarkdownView */,
+				273F80952C241C81008991D4 /* Reachability */,
+			);
+			productName = ShiftFinalProject;
+			productReference = 27B5F8322C1740DE00E91AB6 /* ShiftFinalProject.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27B5F82A2C1740DE00E91AB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					27B5F8312C1740DE00E91AB6 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 27B5F82D2C1740DE00E91AB6 /* Build configuration list for PBXProject "ShiftFinalProject" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27B5F8292C1740DE00E91AB6;
+			packageReferences = (
+				27B5F8E72C21D5C300E91AB6 /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				273F80942C241C81008991D4 /* XCRemoteSwiftPackageReference "Reachability" */,
+			);
+			productRefGroup = 27B5F8332C1740DE00E91AB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27B5F8312C1740DE00E91AB6 /* ShiftFinalProject */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27B5F8302C1740DE00E91AB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5F8422C1740E000E91AB6 /* Assets.xcassets in Resources */,
+				27B5F8452C1740E000E91AB6 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27B5F82E2C1740DE00E91AB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5F8F42C21EBD400E91AB6 /* IRepositoriesListRouter.swift in Sources */,
+				27B5F8A32C1DF1F700E91AB6 /* GeneralModel.swift in Sources */,
+				27B5F8B32C1EF61A00E91AB6 /* RepositoryListDataStore.swift in Sources */,
+				27B5F8E32C21A3B500E91AB6 /* RepositoryDetailFirstInformation.swift in Sources */,
+				27B5F85F2C187B3C00E91AB6 /* Fonts.swift in Sources */,
+				27B5F8812C19EFEB00E91AB6 /* RepositoriesListTableViewDelegate.swift in Sources */,
+				27B5F8872C19FB4800E91AB6 /* RepositoryDescriptionModel.swift in Sources */,
+				27B5F8672C1880CA00E91AB6 /* AuthAssembly.swift in Sources */,
+				273F80AD2C2467F3008991D4 /* RepositoryDetail+CoreDataClass.swift in Sources */,
+				273F80AE2C2467F3008991D4 /* RepositoryDetail+CoreDataProperties.swift in Sources */,
+				27B5F86D2C188EC900E91AB6 /* IAuthPresenter.swift in Sources */,
+				27B5F8612C187BCC00E91AB6 /* Colors.swift in Sources */,
+				27B5F8752C19EF8E00E91AB6 /* RepositoriesListView.swift in Sources */,
+				27B5F8562C18798F00E91AB6 /* AuthViewController.swift in Sources */,
+				27B5F8A52C1DF24C00E91AB6 /* RepositoriesListModel.swift in Sources */,
+				27B5F8632C187CCC00E91AB6 /* MockText.swift in Sources */,
+				27B5F8D62C20824500E91AB6 /* LicenseLabel.swift in Sources */,
+				27B5F8CB2C1F0CA800E91AB6 /* RepositoryDetailDataRepository.swift in Sources */,
+				27B5F88F2C1B3FF800E91AB6 /* AuthDataRepository.swift in Sources */,
+				27B5F8CF2C20787400E91AB6 /* RepositoryDetailModel.swift in Sources */,
+				27B5F8EE2C21E4D300E91AB6 /* IRepositoryDetailRouter.swift in Sources */,
+				27B5F8772C19EF9A00E91AB6 /* RepositoriesListViewController.swift in Sources */,
+				27B5F8582C1879BF00E91AB6 /* AuthView.swift in Sources */,
+				27B5F8D22C207BED00E91AB6 /* RepositoryURLLabel.swift in Sources */,
+				27B5F8692C188EB000E91AB6 /* IAuthViewController.swift in Sources */,
+				27B5F8892C19FEC700E91AB6 /* RepositoriesListAssembly.swift in Sources */,
+				27B5F8792C19EFAA00E91AB6 /* RepositoriesListPresenter.swift in Sources */,
+				273F80A62C244D83008991D4 /* CoreDataService.swift in Sources */,
+				27B5F85D2C187AF900E91AB6 /* ImageNames.swift in Sources */,
+				27B5F8BF2C1EFD8300E91AB6 /* RepositoryDetailViewController.swift in Sources */,
+				27B5F8DF2C219D7500E91AB6 /* RequestSettings.swift in Sources */,
+				27B5F87F2C19EFD800E91AB6 /* RepositoriesListTableViewDataSource.swift in Sources */,
+				27B5F8832C19F20600E91AB6 /* IRepositoriesListViewController.swift in Sources */,
+				27B5F8C92C1EFF5200E91AB6 /* RepositoryDetailDataStore.swift in Sources */,
+				27B5F8402C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld in Sources */,
+				27B5F8DD2C20923A00E91AB6 /* RepositoryStatName.swift in Sources */,
+				27B5F8CD2C1F0CC100E91AB6 /* IRepositoryDetailDataRepository.swift in Sources */,
+				27B5F8A02C1DF00700E91AB6 /* IReEntryService.swift in Sources */,
+				27B5F86F2C18909800E91AB6 /* IAuthViewTextFieldDelegate.swift in Sources */,
+				27B5F8C72C1EFE8900E91AB6 /* IRepositoryDetailViewController.swift in Sources */,
+				27B5F8AC2C1DFD5F00E91AB6 /* IRepositoriesListDataRepository.swift in Sources */,
+				273F80992C241DBA008991D4 /* NetworkReachabilityService.swift in Sources */,
+				27B5F8DA2C208ED400E91AB6 /* RepositoryStatLabel.swift in Sources */,
+				273F808F2C23F4EF008991D4 /* ReadmeDataModel.swift in Sources */,
+				27B5F8BD2C1EFD5A00E91AB6 /* RepositoryDetailAssembly.swift in Sources */,
+				27B5F8932C1B440500E91AB6 /* AuthDataModel.swift in Sources */,
+				27B5F87C2C19EFC500E91AB6 /* IRepositoriesListPresenter.swift in Sources */,
+				27B5F89E2C1DEF7900E91AB6 /* ReEntryService.swift in Sources */,
+				27B5F8992C1CAE6A00E91AB6 /* AuthRouter.swift in Sources */,
+				27B5F8912C1B401200E91AB6 /* IAuthDataRepository.swift in Sources */,
+				27B5F8AE2C1ED46300E91AB6 /* Errors.swift in Sources */,
+				27B5F8652C187D9900E91AB6 /* UIElementSetting.swift in Sources */,
+				27B5F8362C1740DE00E91AB6 /* AppDelegate.swift in Sources */,
+				27B5F8B12C1EEA6C00E91AB6 /* RepositoriesListRouter.swift in Sources */,
+				27B5F8B52C1EF65E00E91AB6 /* ChoseRepositoryModel.swift in Sources */,
+				27B5F8382C1740DE00E91AB6 /* SceneDelegate.swift in Sources */,
+				27B5F8EC2C21E4BD00E91AB6 /* RepositoryDetailRouter.swift in Sources */,
+				27B5F86B2C188EC000E91AB6 /* AuthPresenter.swift in Sources */,
+				27B5F8AA2C1DFD5200E91AB6 /* RepositoriesListDataRepository.swift in Sources */,
+				27B5F88C2C1B3F4C00E91AB6 /* NetworkService.swift in Sources */,
+				27B5F8C32C1EFE5700E91AB6 /* RepositoryDetailPresenter.swift in Sources */,
+				273F80932C240A21008991D4 /* AlertView.swift in Sources */,
+				27B5F8C52C1EFE7500E91AB6 /* IRepositoryDetailPresenter.swift in Sources */,
+				27B5F8852C19F3D400E91AB6 /* RepositoriesListTableViewCell.swift in Sources */,
+				27B5F8C12C1EFD8C00E91AB6 /* RepositoryDetailView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		27B5F8432C1740E000E91AB6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27B5F8442C1740E000E91AB6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27B5F8472C1740E000E91AB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		27B5F8482C1740E000E91AB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27B5F84A2C1740E000E91AB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 587Y6CB23X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShiftFinalProject/Recources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FeRoXXX.ShiftFinalProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27B5F84B2C1740E000E91AB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 587Y6CB23X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShiftFinalProject/Recources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FeRoXXX.ShiftFinalProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27B5F82D2C1740DE00E91AB6 /* Build configuration list for PBXProject "ShiftFinalProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B5F8472C1740E000E91AB6 /* Debug */,
+				27B5F8482C1740E000E91AB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27B5F8492C1740E000E91AB6 /* Build configuration list for PBXNativeTarget "ShiftFinalProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B5F84A2C1740E000E91AB6 /* Debug */,
+				27B5F84B2C1740E000E91AB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		273F80942C241C81008991D4 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		27B5F8E72C21D5C300E91AB6 /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/keitaoouchi/MarkdownView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		273F80952C241C81008991D4 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 273F80942C241C81008991D4 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		27B5F8E82C21D5C300E91AB6 /* MarkdownView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27B5F8E72C21D5C300E91AB6 /* XCRemoteSwiftPackageReference "MarkdownView" */;
+			productName = MarkdownView;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		27B5F83E2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27B5F83F2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodel */,
+			);
+			currentVersion = 27B5F83F2C1740DE00E91AB6 /* ShiftFinalProject.xcdatamodel */;
+			path = ShiftFinalProject.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 27B5F82A2C1740DE00E91AB6 /* Project object */;
+}

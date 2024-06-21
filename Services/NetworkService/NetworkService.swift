@@ -17,6 +17,10 @@ enum NetworkService {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 20
         config.httpAdditionalHeaders = ["Accept": "application/json"]
+        guard let token = reEntryService.getAuthToken() else {
+            return URLSession(configuration: config)
+        }
+        config.httpAdditionalHeaders?["Authorization"] = "Bearer \(token)"
         
         return URLSession(configuration: config)
     }

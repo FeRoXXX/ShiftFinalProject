@@ -37,6 +37,7 @@ private extension RepositoriesListViewController {
         view = componentView
         setupNavigationBarItem()
         setupTitle()
+        setupRetryButtonTarget()
     }
     
     func setupNavigationBarItem() {
@@ -46,6 +47,12 @@ private extension RepositoriesListViewController {
         navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.backButtonDisplayMode = .minimal
+    }
+    
+    func setupRetryButtonTarget() {
+        componentView.buttonTarget = { [weak self] in
+            self?.presenter.retryButtonClicked()
+        }
     }
     
     func setupTitle() {
@@ -77,6 +84,10 @@ extension RepositoriesListViewController: IRepositoriesListViewController {
     
     func setupError(_ error: Errors.Alerts) {
         componentView.setupAlert(error)
+    }
+    
+    func hideAlert() {
+        componentView.hideAlert()
     }
 }
 

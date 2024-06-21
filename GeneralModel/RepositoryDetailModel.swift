@@ -16,6 +16,8 @@ struct RepositoryDetailModel: Decodable {
     let watchers: Int
     let default_branch: String
     let license: License?
+    let description: String?
+    let language: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -26,6 +28,8 @@ struct RepositoryDetailModel: Decodable {
         case watchers = "watchers_count"
         case default_branch
         case license
+        case language
+        case description
     }
     
     init(from decoder: Decoder) throws {
@@ -38,6 +42,8 @@ struct RepositoryDetailModel: Decodable {
         watchers = try container.decode(Int.self, forKey: .watchers)
         default_branch = try container.decode(String.self, forKey: .default_branch)
         license = try container.decodeIfPresent(License.self, forKey: .license)
+        language = try container.decodeIfPresent(String.self, forKey: .language)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
     }
 }
 

@@ -13,4 +13,5 @@ protocol IRepositoriesListViewController: AnyObject {
     func updateData()
     func logOut()
     func setupError(_ error: Errors.Alerts)
+    func hideAlert()
 }

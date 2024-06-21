@@ -26,53 +26,100 @@ extension RepositoryDetailPresenter: IRepositoryDetailPresenter {
         guard let dataStore else { return }
         ui.setTitle(dataStore.repositoryName)
         dataRepository.setupSettings(dataStore)
-        
-        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
-            self?.dataRepository.getDetail { result in
-                switch result {
-                case .success(let success):
-                    self?.repositoryFirstInfoDataModel = success
-                    DispatchQueue.main.async {
-                        ui.setFirstInfo(RepositoryDetailFirstInformation(repositoryURL: success.url,
-                                                                         repositoryLicense: success.license?.spdx_id,
-                                                                         repositoryStars: String(success.stargazers),
-                                                                         repositoryForks: String(success.forks),
-                                                                         repositoryWatchers: String(success.watchers)))
-                        self?.fetchReadMe()
-                    }
-                case .failure(_):
-                    ui.setupError(.somethingError)
-                }
-            }
-        } failure: {
-            ui.setupError(.connectionError)
-        }
+        getFirstData()
     }
     
     func logOut() {
         dataRepository.logOut()
         ui?.logOut()
     }
+    
+    func favoriteButtonTapped() {
+        guard let repositoryFirstInfoDataModel else { return }
+        if dataRepository.isFavorite(by: String(repositoryFirstInfoDataModel.id)) {
+            dataRepository.deleteFavorite(String(repositoryFirstInfoDataModel.id))
+            ui?.setupUnFavorite()
+        } else {
+            dataRepository.saveFavorite(RepositoriesListModel(id: repositoryFirstInfoDataModel.id,
+                                                              name: repositoryFirstInfoDataModel.name,
+                                                              description: repositoryFirstInfoDataModel.description,
+                                                              language: repositoryFirstInfoDataModel.language,
+                                                              owner: Owner(login: dataStore!.ownerName)))
+            ui?.setupFavorite()
+        }
+    }
+    
+    func refreshReadMeRequest() {
+        getReadMeData()
+    }
+    
+    func retryDataRequest() {
+        getFirstData()
+    }
 }
 
 private extension RepositoryDetailPresenter {
     
     func fetchReadMe() {
-        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
-            self?.dataRepository.getReadme { result in
-                switch result {
-                case .success(let data):
-                    guard let decodedData = Data(base64Encoded: data.content, options: .ignoreUnknownCharacters),
-                          let stringData = String(data: decodedData, encoding: .utf8) else { return }
-                    DispatchQueue.main.async {
-                        self?.ui?.setupReadme(stringData)
-                    }
-                case .failure(_):
-                    self?.ui?.setupReadMeError(.loadError)
+        self.dataRepository.getReadme { result in
+            switch result {
+            case .success(let data):
+                guard let decodedData = Data(base64Encoded: data.content, options: .ignoreUnknownCharacters),
+                        let stringData = String(data: decodedData, encoding: .utf8) else { return }
+                DispatchQueue.main.async {
+                    self.ui?.setupReadme(stringData)
+                    self.ui?.hideAlert()
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.ui?.setupReadMeError(.emptyReadme)
                 }
             }
+        }
+    }
+    
+    func fetchFirstData() {
+        dataRepository.getDetail { result in
+            switch result {
+            case .success(let success):
+                self.repositoryFirstInfoDataModel = success
+                DispatchQueue.main.async {
+                    self.ui?.setFirstInfo(RepositoryDetailFirstInformation(repositoryURL: success.url,
+                                                                     repositoryLicense: success.license?.spdx_id,
+                                                                     repositoryStars: String(success.stargazers),
+                                                                     repositoryForks: String(success.forks),
+                                                                     repositoryWatchers: String(success.watchers)))
+                    self.ui?.hideAlert()
+                    self.getReadMeData()
+                    if self.dataRepository.isFavorite(by: String(success.id)) {
+                        self.ui?.setupFavorite()
+                    }
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.ui?.setupError(.somethingError)
+                }
+            }
+        }
+    }
+    
+    func getFirstData() {
+        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
+            self?.fetchFirstData()
         } failure: {
-            self.ui?.setupReadMeError(.connectionError)
+            DispatchQueue.main.async {
+                self.ui?.setupError(.connectionError)
+            }
+        }
+    }
+    
+    func getReadMeData() {
+        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
+            self?.fetchReadMe()
+        } failure: {
+            DispatchQueue.main.async {
+                self.ui?.setupError(.connectionError)
+            }
         }
     }
 }

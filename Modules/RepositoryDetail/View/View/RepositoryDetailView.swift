@@ -41,17 +41,23 @@ final class RepositoryDetailView: UIView {
         return webView
     }()
     
-    private var alertView: AlertView = {
+    private lazy var alertView: AlertView = {
         let alertView = AlertView()
         alertView.isHidden = true
         alertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.buttonTarget = { [weak self] in
+            self?.alertViewButtonClicked?()
+        }
         return alertView
     }()
     
-    private var readMeAlertView: AlertView = {
+    private lazy var readMeAlertView: AlertView = {
         let alertView = AlertView()
         alertView.isHidden = true
         alertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.buttonTarget = { [weak self] in
+            self?.readMeAlertViewButtonClicked?()
+        }
         return alertView
     }()
     
@@ -60,6 +66,8 @@ final class RepositoryDetailView: UIView {
     private var starLabel: RepositoryStatLabel = RepositoryStatLabel(statName: .stars)
     private var forkLabel: RepositoryStatLabel = RepositoryStatLabel(statName: .forks)
     private var watchersLabel: RepositoryStatLabel = RepositoryStatLabel(statName: .watchers)
+    var alertViewButtonClicked: (() -> Void)?
+    var readMeAlertViewButtonClicked: (() -> Void)?
     
     init() {
         super.init(frame: .zero)

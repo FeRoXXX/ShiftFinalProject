@@ -16,6 +16,5 @@ struct RepositoriesListModel: Decodable {
 }
 
 struct Owner: Decodable {
-    let id: Int
     let login: String
 }

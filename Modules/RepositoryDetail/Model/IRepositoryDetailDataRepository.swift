@@ -12,4 +12,7 @@ protocol IRepositoryDetailDataRepository {
     func getReadme(completion: @escaping (Result<ReadmeDataModel, Error>) -> Void)
     func setupSettings(_ settings: ChoseRepositoryModel)
     func logOut()
+    func isFavorite(by id: String) -> Bool
+    func saveFavorite(_ data: RepositoriesListModel)
+    func deleteFavorite(_ id: String)
 }

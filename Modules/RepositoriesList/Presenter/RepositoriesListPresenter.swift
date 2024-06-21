@@ -26,32 +26,7 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
     func viewLoaded(ui: IRepositoriesListViewController) {
         self.ui = ui
         ui.setupDataSource(dataSource)
-        
-        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
-            self?.dataRepository.getRepositories { result in
-                switch result {
-                case .success(let success):
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self else { return }
-                        storageData = success.map {
-                            RepositoryDescriptionModel(name: $0.name, language: $0.language, description: $0.description)
-                        }
-                        if storageData.isEmpty {
-                            ui.setupError(.emptyError)
-                        } else {
-                            dataSource.setupData(storageData)
-                            ui.updateData()
-                        }
-                    }
-                case .failure(_):
-                    DispatchQueue.main.async {
-                        ui.setupError(.somethingError)
-                    }
-                }
-            }
-        } failure: {
-            ui.setupError(.connectionError)
-        }
+        getData()
     }
     
     func showRepository(index: Int) {
@@ -65,5 +40,41 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
     func logOut() {
         dataRepository.logOut()
         ui?.logOut()
+    }
+    
+    func retryButtonClicked() {
+        getData()
+    }
+}
+
+private extension RepositoriesListPresenter {
+    
+    func getData() {
+        NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
+            self?.dataRepository.getRepositories { result in
+                switch result {
+                case .success(let success):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self else { return }
+                        storageData = success.map {
+                            RepositoryDescriptionModel(name: $0.name, language: $0.language, description: $0.description)
+                        }
+                        if storageData.isEmpty {
+                            ui?.setupError(.emptyError)
+                        } else {
+                            dataSource.setupData(storageData)
+                            ui?.updateData()
+                            ui?.hideAlert()
+                        }
+                    }
+                case .failure(_):
+                    DispatchQueue.main.async { [weak self] in
+                        self?.ui?.setupError(.somethingError)
+                    }
+                }
+            }
+        } failure: {
+            self.ui?.setupError(.connectionError)
+        }
     }
 }

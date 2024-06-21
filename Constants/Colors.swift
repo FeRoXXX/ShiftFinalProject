@@ -46,7 +46,7 @@ enum Colors {
             switch error {
             case .connectionError, .loadError, .somethingError:
                 fatalError
-            case .emptyError:
+            case .emptyError, .emptyReadme:
                 warning
             }
         }

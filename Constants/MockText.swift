@@ -47,7 +47,7 @@ enum MockText {
             switch error {
             case .connectionError, .loadError, .somethingError:
                 Retry.rawValue
-            case .emptyError:
+            case .emptyError, .emptyReadme:
                 Refresh.rawValue
             }
         }

@@ -17,6 +17,7 @@ enum Errors: Error {
         case loadError = "Load error"
         case somethingError = "Something Error"
         case emptyError = "Empty"
+        case emptyReadme = "Empty Readme file"
         
         static func getDescription(by error: Alerts) -> String {
             switch error {
@@ -26,6 +27,8 @@ enum Errors: Error {
                 "Check your something"
             case .emptyError:
                 "No repositories at the moment"
+            case .emptyReadme:
+                "Readme doesn't exist try again later"
             }
         }
     }

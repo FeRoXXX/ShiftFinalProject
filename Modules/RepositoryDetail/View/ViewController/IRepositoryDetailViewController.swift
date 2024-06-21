@@ -14,4 +14,7 @@ protocol IRepositoryDetailViewController: AnyObject {
     func logOut()
     func setupError(_ error: Errors.Alerts)
     func setupReadMeError(_ error: Errors.Alerts)
+    func setupFavorite()
+    func setupUnFavorite()
+    func hideAlert()
 }

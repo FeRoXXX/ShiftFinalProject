@@ -12,5 +12,6 @@ protocol IAuthPresenter {
     func textFieldSelected()
     func textFieldNoSelected(text: String?)
     func signInButtonClicked(text: String?)
+    func favoriteButtonClicked()
     func hideKeyboard()
 }

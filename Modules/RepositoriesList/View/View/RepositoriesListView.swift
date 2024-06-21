@@ -27,12 +27,17 @@ final class RepositoriesListView: UIView {
         return tableView
     }()
     
-    private var alertView: AlertView = {
+    private lazy var alertView: AlertView = {
         let alertView = AlertView()
         alertView.isHidden = true
         alertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.buttonTarget = { [weak self] in
+            self?.setupRetryButtonTarget()
+        }
         return alertView
     }()
+    
+    var buttonTarget: (() -> Void)?
     
     init(delegate: RepositoriesListTableViewDelegate) {
         tableView.delegate = delegate
@@ -75,6 +80,10 @@ private extension RepositoriesListView {
             alertView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             alertView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    func setupRetryButtonTarget() {
+        buttonTarget?()
     }
 }
 

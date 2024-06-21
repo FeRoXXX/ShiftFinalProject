@@ -13,6 +13,11 @@ final class RepositoryDetailViewController: UIViewController {
     private let presenter: IRepositoryDetailPresenter
     private let router: IRepositoryDetailRouter
     
+    private lazy var addToFavoriteButton = UIBarButtonItem(image: UIImage(systemName: ImageNames.star.rawValue),
+                                                      style: .plain,
+                                                      target: self,
+                                                      action: #selector(favoriteButtonTapped))
+    
     init(presenter: IRepositoryDetailPresenter, router: IRepositoryDetailRouter) {
         self.presenter = presenter
         self.router = router
@@ -31,6 +36,10 @@ final class RepositoryDetailViewController: UIViewController {
         router.setupRouter(self)
         presenter.viewLoaded(ui: self)
     }
+    
+    deinit {
+        print("deinited")
+    }
 }
 
 private extension RepositoryDetailViewController {
@@ -38,16 +47,31 @@ private extension RepositoryDetailViewController {
     func setupUI() {
         view = componentView
         setupNavigationBar()
+        setupAlertsButton()
     }
     
     func setupNavigationBar() {
         let button = UIBarButtonItem(image: UIImage(named: ImageNames.Quit.rawValue), style: .done, target: self, action: #selector(quitButtonTapped))
-        navigationItem.rightBarButtonItems = [button]
+        navigationItem.rightBarButtonItems = [button, addToFavoriteButton]
         navigationItem.rightBarButtonItem?.tintColor = Colors.navigationBarItemsColor
+    }
+    
+    func setupAlertsButton() {
+        componentView.alertViewButtonClicked = { [weak self] in
+            self?.presenter.retryDataRequest()
+        }
+        
+        componentView.readMeAlertViewButtonClicked = { [weak self] in
+            self?.presenter.refreshReadMeRequest()
+        }
     }
     
     @objc func quitButtonTapped() {
         presenter.logOut()
+    }
+    
+    @objc func favoriteButtonTapped() {
+        presenter.favoriteButtonTapped()
     }
 }
 
@@ -75,5 +99,17 @@ extension RepositoryDetailViewController: IRepositoryDetailViewController {
     
     func setupReadMeError(_ error: Errors.Alerts) {
         componentView.setupReadMeAlert(error)
+    }
+    
+    func setupFavorite() {
+        addToFavoriteButton.image = UIImage(systemName: ImageNames.starFill.rawValue)
+    }
+    
+    func setupUnFavorite() {
+        addToFavoriteButton.image = UIImage(systemName: ImageNames.star.rawValue)
+    }
+    
+    func hideAlert() {
+        componentView.hideAlert()
     }
 }

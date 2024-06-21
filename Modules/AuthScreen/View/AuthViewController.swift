@@ -51,6 +51,11 @@ private extension AuthViewController {
             guard let self else { return }
             presenter.signInButtonClicked(text: componentView.accessTokenTextField.text)
         }
+        
+        componentView.routeToFavorite = { [weak self] in
+            guard let self else { return }
+            presenter.favoriteButtonClicked()
+        }
     }
     
     @objc func userTappedToEmptyView() {
@@ -74,6 +79,10 @@ extension AuthViewController: IAuthViewController {
     
     func successAuth() {
         router?.routeToRepositoriesList()
+    }
+    
+    func toFavorite() {
+        router?.routeToRepositoriesListFavorite()
     }
     
     func hideKeyboard() {

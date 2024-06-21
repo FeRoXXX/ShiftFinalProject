@@ -45,7 +45,7 @@ extension AuthPresenter: IAuthPresenter {
         
         dataRepository.signIn(token: text) { result in
             switch result {
-            case .success(let success):
+            case .success(_):
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.ui?.successAuth()
@@ -56,6 +56,10 @@ extension AuthPresenter: IAuthPresenter {
                 }
             }
         }
+    }
+    
+    func favoriteButtonClicked() {
+        ui?.toFavorite()
     }
     
     func hideKeyboard() {

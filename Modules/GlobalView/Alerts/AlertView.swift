@@ -9,6 +9,8 @@ import UIKit
 
 final class AlertView: UIView {
     
+    var buttonTarget: (() -> Void)?
+    
     private var alertImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,13 +32,14 @@ final class AlertView: UIView {
         return label
     }()
     
-    private var retryButton: UIButton = {
+    private lazy var retryButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(Colors.textColor, for: .normal)
         button.backgroundColor = Colors.buttonColor
         button.layer.cornerRadius = UIElementSetting.cornerRadius
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonTriggered), for: .touchUpInside)
         return button
     }()
     
@@ -79,6 +82,10 @@ private extension AlertView {
             retryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             retryButton.heightAnchor.constraint(equalToConstant: 48)
         ])
+    }
+    
+    @objc func buttonTriggered() {
+        buttonTarget?()
     }
 }
 

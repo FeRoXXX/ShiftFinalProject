@@ -43,7 +43,7 @@ enum ImageNames: String {
                 InternetConnection.rawValue
             case .somethingError:
                 Something.rawValue
-            case .emptyError:
+            case .emptyError, .emptyReadme:
                 Path.rawValue
             }
         }

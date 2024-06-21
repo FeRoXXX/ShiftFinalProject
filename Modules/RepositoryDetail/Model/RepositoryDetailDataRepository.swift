@@ -52,6 +52,18 @@ extension RepositoryDetailDataRepository: IRepositoryDetailDataRepository {
         }
     }
     
+    func isFavorite(by id: String) -> Bool {
+        CoreDataService.shared.checkFavorite(by: id)
+    }
+    
+    func saveFavorite(_ data: RepositoriesListModel) {
+        CoreDataService.shared.createObject(data)
+    }
+    
+    func deleteFavorite(_ id: String) {
+        CoreDataService.shared.deleteRepository(by: id)
+    }
+    
     func logOut() {
         NetworkService.getRepositories.logOut()
     }

@@ -10,6 +10,7 @@ import UIKit
 final class AuthView: UIView {
     
     var buttonDidTapped: (() -> Void)?
+    var routeToFavorite: (() -> Void)?
     
     private let appIcon: UIImageView = {
         let image = UIImageView(image: UIImage(named: ImageNames.AppLogo.rawValue))
@@ -51,7 +52,7 @@ final class AuthView: UIView {
         button.layer.borderWidth = UIElementSetting.borderWidth
         button.backgroundColor = Colors.buttonColor
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInButtonTap), for: .touchUpInside)
         return button
     }()
     
@@ -59,6 +60,7 @@ final class AuthView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: ImageNames.star.rawValue), for: .normal)
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -110,6 +112,14 @@ private extension AuthView {
             favoriteButton.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
+    @objc func favoriteButtonTapped() {
+        routeToFavorite?()
+    }
+    
+    @objc func signInButtonTap() {
+        buttonDidTapped?()
+    }
 }
 
 extension AuthView {
@@ -126,9 +136,5 @@ extension AuthView {
     func setupError() {
         errorAlertLabel.isHidden = false
         accessTokenTextField.layer.borderColor = Colors.errorColor.cgColor
-    }
-    
-    @objc func buttonTap() {
-        buttonDidTapped?()
     }
 }

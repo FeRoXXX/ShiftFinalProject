@@ -9,6 +9,7 @@ import Foundation
 
 protocol IAuthRouter {
     func routeToRepositoriesList()
+    func routeToRepositoriesListFavorite()
     func setupUI(_ viewController: AuthViewController)
 }
 
@@ -19,8 +20,13 @@ final class AuthRouter {
 
 extension AuthRouter: IAuthRouter {
     
+    func routeToRepositoriesListFavorite() {
+        let destinationVC = RepositoriesListAssembly.build(identifier: .getFromLocal)
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
     func routeToRepositoriesList() {
-        let destinationVC = RepositoriesListAssembly.build()
+        let destinationVC = RepositoriesListAssembly.build(identifier: .getFromInternet)
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     

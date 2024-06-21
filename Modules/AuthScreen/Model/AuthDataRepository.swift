@@ -26,4 +26,8 @@ extension AuthDataRepository: IAuthDataRepository {
             }
         }
     }
+    
+    func checkSignIn() -> Bool {
+        NetworkService.getRepositories.checkSignIn()
+    }
 }

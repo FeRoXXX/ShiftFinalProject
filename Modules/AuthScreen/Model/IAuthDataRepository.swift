@@ -9,4 +9,5 @@ import Foundation
 
 protocol IAuthDataRepository {
     func signIn(token: String, completion: @escaping(Result<AuthDataModel, Error>) -> Void)
+    func checkSignIn() -> Bool
 }

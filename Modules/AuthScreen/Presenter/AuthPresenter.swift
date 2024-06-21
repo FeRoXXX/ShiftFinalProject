@@ -20,6 +20,9 @@ extension AuthPresenter: IAuthPresenter {
     
     func viewLoaded(ui: IAuthViewController) {
         self.ui = ui
+        if dataRepository.checkSignIn() {
+            ui.successAuth()
+        }
     }
     
     func textFieldSelected() {
@@ -46,7 +49,6 @@ extension AuthPresenter: IAuthPresenter {
         dataRepository.signIn(token: text) { result in
             switch result {
             case .success(_):
-                
                 DispatchQueue.main.async { [weak self] in
                     self?.ui?.successAuth()
                 }

@@ -61,6 +61,14 @@ extension NetworkService {
         task.resume()
     }
     
+    func checkSignIn() -> Bool {
+        if reEntryService.getReposURL() != nil {
+            true
+        } else {
+            false
+        }
+    }
+    
     private func makeRequest() -> URLRequest? {
         switch self {
         case .signIn(let token):
@@ -72,7 +80,7 @@ extension NetworkService {
             var request = URLRequest(url: baseComponentURL)
 
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+            reEntryService.setAuthToken(token: token)
             return request
         case .getRepositories:
             guard let reposURL = reEntryService.getReposURL() else {

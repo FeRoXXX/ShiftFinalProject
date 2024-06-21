@@ -43,6 +43,13 @@ final class AlertView: UIView {
         return button
     }()
     
+    private var loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator.color = Colors.loadingIndicatorColor
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return loadingIndicator
+    }()
+    
     init() {
         super.init(frame: .zero)
         setupUI()
@@ -67,6 +74,7 @@ private extension AlertView {
         addSubview(alertText)
         addSubview(alertDescriptionText)
         addSubview(retryButton)
+        addSubview(loadingIndicator)
     }
     
     func setupConstraints() {
@@ -80,7 +88,9 @@ private extension AlertView {
             retryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             retryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             retryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            retryButton.heightAnchor.constraint(equalToConstant: 48)
+            retryButton.heightAnchor.constraint(equalToConstant: 48),
+            loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
@@ -97,5 +107,23 @@ extension AlertView {
         alertText.text = error.rawValue
         alertDescriptionText.text = Errors.Alerts.getDescription(by: error)
         retryButton.setTitle(MockText.AlertButtonText.getText(by: error), for: .normal)
+    }
+    
+    func startLoading() {
+        alertText.isHidden = true
+        alertImageView.isHidden = true
+        alertDescriptionText.isHidden = true
+        retryButton.isHidden = true
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        loadingIndicator.stopAnimating()
+        alertText.isHidden = false
+        alertImageView.isHidden = false
+        alertDescriptionText.isHidden = false
+        retryButton.isHidden = false
+        loadingIndicator.isHidden = true
     }
 }

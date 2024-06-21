@@ -12,4 +12,5 @@ protocol IRepositoriesListPresenter {
     func showRepository(index: Int)
     func logOut()
     func retryButtonClicked()
+    func requestData()
 }

@@ -61,7 +61,11 @@ extension RepositoryDetailPresenter: IRepositoryDetailPresenter {
 private extension RepositoryDetailPresenter {
     
     func fetchReadMe() {
+        ui?.startLoadingReadMe()
         self.dataRepository.getReadme { result in
+            DispatchQueue.main.async {
+                self.ui?.stopLoadingReadMe()
+            }
             switch result {
             case .success(let data):
                 guard let decodedData = Data(base64Encoded: data.content, options: .ignoreUnknownCharacters),
@@ -79,7 +83,11 @@ private extension RepositoryDetailPresenter {
     }
     
     func fetchFirstData() {
+        ui?.startLoadingGlobal()
         dataRepository.getDetail { result in
+            DispatchQueue.main.async {
+                self.ui?.stopLoadingGlobal()
+            }
             switch result {
             case .success(let success):
                 self.repositoryFirstInfoDataModel = success

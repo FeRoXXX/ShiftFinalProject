@@ -155,4 +155,33 @@ extension RepositoryDetailView {
         alertView.isHidden = true
         readMeAlertView.isHidden = true
     }
+    
+    func startLoadingGlobal() {
+        firstInfoStack.isHidden = true
+        readMeView.isHidden = true
+        alertView.isHidden = false
+        alertView.startLoading()
+    }
+    
+    func startLoadingReadMe() {
+        readMeView.isHidden = true
+        readMeAlertView.isHidden = false
+        readMeAlertView.startLoading()
+    }
+    
+    func stopLoadingGlobal() {
+        alertView.stopLoading()
+        firstInfoStack.isHidden = false
+        readMeView.isHidden = false
+        alertView.isHidden = true
+        readMeAlertView.isHidden = true
+    }
+    
+    func stopLoadingReadMe() {
+        readMeAlertView.stopLoading()
+        firstInfoStack.isHidden = false
+        readMeView.isHidden = false
+        alertView.isHidden = true
+        readMeAlertView.isHidden = true
+    }
 }

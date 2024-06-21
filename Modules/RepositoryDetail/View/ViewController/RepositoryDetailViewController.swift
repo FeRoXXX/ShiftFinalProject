@@ -36,10 +36,6 @@ final class RepositoryDetailViewController: UIViewController {
         router.setupRouter(self)
         presenter.viewLoaded(ui: self)
     }
-    
-    deinit {
-        print("deinited")
-    }
 }
 
 private extension RepositoryDetailViewController {
@@ -111,5 +107,21 @@ extension RepositoryDetailViewController: IRepositoryDetailViewController {
     
     func hideAlert() {
         componentView.hideAlert()
+    }
+    
+    func startLoadingGlobal() {
+        componentView.startLoadingGlobal()
+    }
+    
+    func startLoadingReadMe() {
+        componentView.startLoadingReadMe()
+    }
+    
+    func stopLoadingGlobal() {
+        componentView.stopLoadingGlobal()
+    }
+    
+    func stopLoadingReadMe() {
+        componentView.stopLoadingReadMe()
     }
 }

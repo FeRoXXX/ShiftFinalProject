@@ -9,10 +9,17 @@ import UIKit
 
 protocol IRepositoriesListTableViewDataSource: UITableViewDataSource {
     func setupData(_ data: [RepositoryDescriptionModel])
+    var deleteTarget: ((Int) -> Void)? { get set }
 }
 
 final class RepositoriesListTableViewDataSource: NSObject {
-    var data: [RepositoryDescriptionModel] = []
+    private var data: [RepositoryDescriptionModel] = []
+    private var identifier: DataRepositoryIdentifier
+    var deleteTarget: ((Int) -> Void)?
+    
+    init(identifier: DataRepositoryIdentifier) {
+        self.identifier = identifier
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
@@ -25,6 +32,21 @@ final class RepositoriesListTableViewDataSource: NSObject {
         
         cell.setupData(data[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch identifier {
+        case .getFromInternet:
+            false
+        case .getFromLocal:
+            true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteTarget?(indexPath.row)
+        }
     }
 }
 

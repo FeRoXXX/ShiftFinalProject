@@ -48,6 +48,11 @@ extension RepositoriesListDataRepository: IRepositoriesListDataRepository {
         }
     }
     
+    func deleteRow(at index: Int) {
+        guard index < storageData.count else { return }
+        CoreDataService.shared.deleteRepository(by: String(storageData[index].id))
+    }
+    
     func logOut() {
         NetworkService.getRepositories.logOut()
     }

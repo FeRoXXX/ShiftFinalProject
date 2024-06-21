@@ -9,7 +9,7 @@ import UIKit
 
 class RepositoriesListAssembly {
     static func build(identifier: DataRepositoryIdentifier) -> UIViewController {
-        let dataSource = RepositoriesListTableViewDataSource()
+        let dataSource = RepositoriesListTableViewDataSource(identifier: identifier)
         let dataRepository = RepositoriesListDataRepository(identifier: identifier)
         let presenter = RepositoriesListPresenter(dataSource: dataSource, dataRepository: dataRepository)
         let router = RepositoriesListRouter(dataStore: presenter)

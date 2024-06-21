@@ -27,6 +27,7 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
         self.ui = ui
         ui.setupDataSource(dataSource)
         getData()
+        setupDataSourceTarget()
     }
     
     func showRepository(index: Int) {
@@ -45,13 +46,21 @@ extension RepositoriesListPresenter: IRepositoriesListPresenter {
     func retryButtonClicked() {
         getData()
     }
+    
+    func requestData() {
+        getData()
+    }
 }
 
 private extension RepositoriesListPresenter {
     
     func getData() {
+        ui?.startLoading()
         NetworkReachabilityService.shared.checkInternetConnection { [weak self] in
             self?.dataRepository.getRepositories { result in
+                DispatchQueue.main.async {
+                    self?.ui?.stopLoading()
+                }
                 switch result {
                 case .success(let success):
                     DispatchQueue.main.async { [weak self] in
@@ -76,5 +85,16 @@ private extension RepositoriesListPresenter {
         } failure: {
             self.ui?.setupError(.connectionError)
         }
+    }
+    
+    func setupDataSourceTarget() {
+        dataSource.deleteTarget = { [weak self] index in
+            self?.deleteRepository(at: index)
+        }
+    }
+    
+    func deleteRepository(at index: Int) {
+        dataRepository.deleteRow(at: index)
+        getData()
     }
 }

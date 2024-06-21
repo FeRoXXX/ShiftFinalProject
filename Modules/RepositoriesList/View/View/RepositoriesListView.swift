@@ -103,6 +103,18 @@ extension RepositoriesListView {
         alertView.setupElements(error)
     }
     
+    func startLoading() {
+        tableView.isHidden = true
+        alertView.isHidden = false
+        alertView.startLoading()
+    }
+    
+    func stopLoading() {
+        alertView.stopLoading()
+        tableView.isHidden = true
+        alertView.isHidden = false
+    }
+    
     func hideAlert() {
         tableView.isHidden = false
         alertView.isHidden = true

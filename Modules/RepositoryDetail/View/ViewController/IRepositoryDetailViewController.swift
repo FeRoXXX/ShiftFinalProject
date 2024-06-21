@@ -17,4 +17,8 @@ protocol IRepositoryDetailViewController: AnyObject {
     func setupFavorite()
     func setupUnFavorite()
     func hideAlert()
+    func startLoadingGlobal()
+    func stopLoadingGlobal()
+    func startLoadingReadMe()
+    func stopLoadingReadMe()
 }

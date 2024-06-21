@@ -8,7 +8,7 @@
 import Foundation
 
 class RepositoryDetailRouter {
-    private var sourceVC: RepositoryDetailViewController?
+    private weak var sourceVC: RepositoryDetailViewController?
 }
 
 extension RepositoryDetailRouter: IRepositoryDetailRouter {

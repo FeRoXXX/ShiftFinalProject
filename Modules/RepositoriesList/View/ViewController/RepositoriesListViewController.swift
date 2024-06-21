@@ -29,6 +29,11 @@ final class RepositoriesListViewController: UIViewController {
         router.setupUI(self)
         presenter.viewLoaded(ui: self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.requestData()
+    }
 }
 
 private extension RepositoriesListViewController {
@@ -84,6 +89,14 @@ extension RepositoriesListViewController: IRepositoriesListViewController {
     
     func setupError(_ error: Errors.Alerts) {
         componentView.setupAlert(error)
+    }
+    
+    func startLoading() {
+        componentView.startLoading()
+    }
+    
+    func stopLoading() {
+        componentView.stopLoading()
     }
     
     func hideAlert() {

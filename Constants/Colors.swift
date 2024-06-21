@@ -20,6 +20,7 @@ enum Colors {
     static let navigationBarItemsColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let clearColor = UIColor.clear
     static let urlFontColor = #colorLiteral(red: 0.4101545811, green: 0.7174265981, blue: 1, alpha: 1)
+    static let loadingIndicatorColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     
     enum StatColors {
         static let starsColor = #colorLiteral(red: 0.9866850972, green: 0.8703593612, blue: 0.5349690318, alpha: 1)

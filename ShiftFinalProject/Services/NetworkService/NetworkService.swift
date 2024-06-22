@@ -86,7 +86,7 @@ extension NetworkService {
             guard let reposURL = reEntryService.getReposURL() else {
                 fatalError(Errors.Alerts.somethingError.rawValue)
             }
-            let baseComponent = URLComponents(string: "https://api.github.com/users/icerockdev/repos")
+            let baseComponent = URLComponents(string: reposURL)
             guard let baseComponentURL = baseComponent?.url else {
                 fatalError(Errors.Alerts.somethingError.rawValue)
             }
